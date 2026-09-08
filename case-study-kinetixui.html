@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KinetixUI · Case Study · Zed Alleys</title>
+<meta name="description" content="Inside KinetixUI, a design-token engine and 72-component library that ships in lockstep across React, SwiftUI, Jetpack Compose and Flutter from one design source.">
+<meta property="og:title" content="KinetixUI · Case Study · Zed Alleys">
+<meta property="og:description" content="One token architecture, in motion across React, SwiftUI, Jetpack Compose and Flutter.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://zedalleys.com/case-study-kinetixui.html">
+<meta property="og:image" content="https://zedalleys.com/assets/images/kinetixui/01-hero.jpg">
+<meta property="og:site_name" content="Zed Alleys">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="KinetixUI · Case Study · Zed Alleys">
+<meta name="twitter:description" content="One token architecture, in motion across React, SwiftUI, Jetpack Compose and Flutter.">
+<meta name="twitter:image" content="https://zedalleys.com/assets/images/kinetixui/01-hero.jpg">
+<link rel="canonical" href="https://zedalleys.com/case-study-kinetixui.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/images/zed-logo.png">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0a1416">
+<meta name="view-transition" content="same-origin">
+<link rel="preload" href="/assets/fonts/fraunces-italic-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles/system.css">
+<link rel="stylesheet" href="/styles/case-study.css">
+<link rel="alternate" type="application/rss+xml" title="Zed Alleys — Journal" href="/feed.xml">
+<script defer data-domain="zedalleys.com" src="https://plausible.io/js/script.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Work",
+        "item": "https://zedalleys.com/portfolio.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "KinetixUI",
+        "item": "https://zedalleys.com/case-study-kinetixui.html"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "KinetixUI",
+    "headline": "KinetixUI: one token architecture, in motion across every platform",
+    "about": "Cross-platform design-token engine and component library",
+    "creator": {
+      "@type": "Person",
+      "name": "Ziad Fteha",
+      "url": "https://zedalleys.com/about.html"
+    },
+    "dateCreated": "2026",
+    "url": "https://zedalleys.com/case-study-kinetixui.html",
+    "image": "https://zedalleys.com/assets/images/kinetixui/01-hero.jpg"
+  }
+]
+</script>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-brand"><img src="/assets/images/zed-logo-light.png" alt="Zed Alleys" class="brand-mark" width="161" height="60"><span class="brand-word">Alleys</span></a>
+  <div class="nav-links" id="navLinks">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/about.html" class="nav-link">About</a>
+    <a href="/portfolio.html" class="nav-link is-active" aria-current="page">Work</a>
+    <a href="/blog.html" class="nav-link">Journal</a>
+    <a href="/contact.html" class="nav-link">Contact</a>
+    <a href="/learning-hub/" class="nav-link">Learning Hub</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+</nav>
+
+
+<main>
+
+<header class="case-hero">
+  <div class="breadcrumb">
+    <a href="/portfolio.html">← Work</a>
+    <span>/</span>
+    <span>KinetixUI · Open-source, self-initiated</span>
+  </div>
+  <h1 class="display split-line">KinetixUI, <em>in motion.</em></h1>
+  <div class="meta-row">
+    <div class="meta-item"><span class="label">Client</span><span class="value">Personal / open-source</span></div>
+    <div class="meta-item"><span class="label">Role</span><span class="value">Founder — Design &amp; Engineering</span></div>
+    <div class="meta-item"><span class="label">Team</span><span class="value">Solo, open to contributions</span></div>
+    <div class="meta-item"><span class="label">Timeline</span><span class="value">2026 — ongoing (beta)</span></div>
+    <div class="meta-item"><span class="label">Platform</span><span class="value">React, SwiftUI, Compose, Flutter</span></div>
+  </div>
+</header>
+
+<div class="case-hero-image">
+  <picture>
+  <source type="image/webp" srcset="/assets/images/kinetixui/01-hero-640.webp 640w, /assets/images/kinetixui/01-hero-960.webp 960w, /assets/images/kinetixui/01-hero-1280.webp 1280w, /assets/images/kinetixui/01-hero.webp 1600w" sizes="(min-width: 1000px) 1000px, 100vw">
+  <img src="/assets/images/kinetixui/01-hero.jpg" srcset="/assets/images/kinetixui/01-hero-640.jpg 640w, /assets/images/kinetixui/01-hero-960.jpg 960w, /assets/images/kinetixui/01-hero-1280.jpg 1280w, /assets/images/kinetixui/01-hero.jpg 1600w" sizes="(min-width: 1000px) 1000px, 100vw" width="1600" height="815" alt="KinetixUI homepage — 'One token architecture, in motion across every platform'" fetchpriority="high" decoding="async">
+</picture>
+</div>
+
+<!-- BRIEF -->
+<section class="case-section">
+  <h2>The brief.</h2>
+  <div class="copy">
+    <p>Every product I'd shipped that spanned web and native ended up with the same quiet tax: a button re-built by hand in React, then again in Swift, then again in Kotlin, each one drifting a shade further from the Figma file every quarter. Dark mode diverged first, then spacing, then which shade of "primary" a given screen actually used.</p>
+    <p>I set myself the brief I'd have given a client: one design source, no re-implementation, no drift — and it has to hold up under a real accessibility standard, not just look consistent.</p>
+    <div class="pull-quote">"Change the token once. It propagates everywhere, or the system has failed."</div>
+  </div>
+</section>
+
+<!-- IDEA -->
+<section class="case-section">
+  <h2>The idea.</h2>
+  <div class="copy">
+    <p>KinetixUI compiles a single DTCG token source — extracted straight from the Figma file — through Style Dictionary into CSS custom properties, a typed TypeScript object, and native colour and type sets for SwiftUI, Jetpack Compose and Flutter. Every one of the 72 components is styled only against that semantic layer, never a hardcoded hex, so a token edit re-skins the button on all four platforms at once.</p>
+    <p>Installation works like ownership, not dependency: a first-party CLI (<code>npx @kinetixui/cli add button</code>) resolves a component's registry entry and writes the real source into your project — the same model shadcn popularized — rather than locking you to a version behind a black-box import.</p>
+  </div>
+</section>
+
+<div class="case-images">
+  <div class="placeholder"><picture>
+  <source type="image/webp" srcset="/assets/images/kinetixui/02-components-640.webp 640w, /assets/images/kinetixui/02-components-960.webp 960w, /assets/images/kinetixui/02-components-1280.webp 1280w, /assets/images/kinetixui/02-components.webp 1600w" sizes="(min-width: 1000px) 1000px, 100vw">
+  <img src="/assets/images/kinetixui/02-components.jpg" srcset="/assets/images/kinetixui/02-components-640.jpg 640w, /assets/images/kinetixui/02-components-960.jpg 960w, /assets/images/kinetixui/02-components-1280.jpg 1280w, /assets/images/kinetixui/02-components.jpg 1600w" sizes="(min-width: 1000px) 1000px, 100vw" width="1600" height="815" alt="The component registry — 72 components across 7 categories, tagged by platform" loading="lazy" decoding="async">
+</picture></div>
+  <div class="placeholder"><picture>
+  <source type="image/webp" srcset="/assets/images/kinetixui/05-blocks-640.webp 640w, /assets/images/kinetixui/05-blocks-960.webp 960w, /assets/images/kinetixui/05-blocks-1280.webp 1280w, /assets/images/kinetixui/05-blocks.webp 1600w" sizes="(min-width: 1000px) 1000px, 100vw">
+  <img src="/assets/images/kinetixui/05-blocks.jpg" srcset="/assets/images/kinetixui/05-blocks-640.jpg 640w, /assets/images/kinetixui/05-blocks-960.jpg 960w, /assets/images/kinetixui/05-blocks-1280.jpg 1280w, /assets/images/kinetixui/05-blocks.jpg 1600w" sizes="(min-width: 1000px) 1000px, 100vw" width="1600" height="815" alt="Blocks — whole sections composed from the registry, with a Compose and Flutter equivalent for each" loading="lazy" decoding="async">
+</picture></div>
+</div>
+
+<!-- STICKY SCROLL — process -->
+<section class="case-sticky">
+  <div class="case-sticky-text">
+    <div class="case-sticky-text-block" data-step="0">
+      <div>
+        <span class="step">Step 01 · Token engine</span>
+        <h3>One source, four outputs.</h3>
+        <p>Colour ramps, spacing, radius and type all start as DTCG tokens pulled from Figma variables, then run through Style Dictionary once per theme. Light and dark aren't a flip of each other — dark never existed in the source file, so it's synthesized as its own independent palette, checked against the same contrast bar as light.</p>
+      </div>
+    </div>
+    <div class="case-sticky-text-block" data-step="1">
+      <div>
+        <span class="step">Step 02 · Registry &amp; CLI</span>
+        <h3>Copy the code, own the code.</h3>
+        <p>Every component ships a canonical React implementation plus illustrative SwiftUI, Jetpack Compose and Flutter snippets, one keyed map so there's a single source of truth per platform. The CLI and a shadcn-compatible JSON registry both read from it — <code>add button</code> resolves dependencies and writes it straight into your tree.</p>
+      </div>
+    </div>
+    <div class="case-sticky-text-block" data-step="2">
+      <div>
+        <span class="step">Step 03 · Data viz</span>
+        <h3>Charts that re-theme for free.</h3>
+        <p>Thirty-six chart recipes wrap Recharts and draw every colour from the <code>--chart-1…8</code> tokens, so a palette change reaches the dashboard along with the buttons. Each cartesian recipe carries keyboard data-point navigation and a screen-reader table alternative, not just a canvas.</p>
+      </div>
+    </div>
+    <div class="case-sticky-text-block" data-step="3">
+      <div>
+        <span class="step">Step 04 · Accessibility, gated</span>
+        <h3>Trust the audit, not the vibe.</h3>
+        <p>A script resolves every semantic colour pair, light and dark, and checks it against WCAG AA before anything ships — CI fails the build on a regression instead of catching it in a design review. The docs site is the proof: built entirely on <code>@kinetixui/ui</code> and <code>@kinetixui/tokens</code>, in the same themes it documents.</p>
+      </div>
+    </div>
+  </div>
+  <div class="case-sticky-images" id="stickyImages">
+    <div class="case-sticky-image is-active" data-step="0"><picture>
+  <source type="image/webp" srcset="/assets/images/kinetixui/03-colors-640.webp 640w, /assets/images/kinetixui/03-colors-960.webp 960w, /assets/images/kinetixui/03-colors-1280.webp 1280w, /assets/images/kinetixui/03-colors.webp 1600w" sizes="(min-width: 1000px) 1000px, 100vw">
+  <img src="/assets/images/kinetixui/03-colors.jpg" srcset="/assets/images/kinetixui/03-colors-640.jpg 640w, /assets/images/kinetixui/03-colors-960.jpg 960w, /assets/images/kinetixui/03-colors-1280.jpg 1280w, /assets/images/kinetixui/03-colors.jpg 1600w" sizes="(min-width: 1000px) 1000px, 100vw" width="1600" height="815" alt="The colour system — seven brand ramps plus a synthesized neutral, every token tagged AA/fail" loading="lazy" decoding="async">
+</picture></div>
+    <div class="case-sticky-image" data-step="1"><picture>
+  <source type="image/webp" srcset="/assets/images/kinetixui/06-button-code-640.webp 640w, /assets/images/kinetixui/06-button-code-960.webp 960w, /assets/images/kinetixui/06-button-code-1280.webp 1280w, /assets/images/kinetixui/06-button-code.webp 1600w" sizes="(min-width: 1000px) 1000px, 100vw">
+  <img src="/assets/images/kinetixui/06-button-code.jpg" srcset="/assets/images/kinetixui/06-button-code-640.jpg 640w, /assets/images/kinetixui/06-button-code-960.jpg 960w, /assets/images/kinetixui/06-button-code-1280.jpg 1280w, /assets/images/kinetixui/06-button-code.jpg 1600w" sizes="(min-width: 1000px) 1000px, 100vw" width="1600" height="815" alt="A component's Code tab — React, HTML, iOS, Android and Flutter snippets from one registry entry" loading="lazy" decoding="async">
+</picture></div>
+    <div class="case-sticky-image" data-step="2"><picture>
+  <source type="image/webp" srcset="/assets/images/kinetixui/04-charts-640.webp 640w, /assets/images/kinetixui/04-charts-960.webp 960w, /assets/images/kinetixui/04-charts-1280.webp 1280w, /assets/images/kinetixui/04-charts.webp 1600w" sizes="(min-width: 1000px) 1000px, 100vw">
+  <img src="/assets/images/kinetixui/04-charts.jpg" srcset="/assets/images/kinetixui/04-charts-640.jpg 640w, /assets/images/kinetixui/04-charts-960.jpg 960w, /assets/images/kinetixui/04-charts-1280.jpg 1280w, /assets/images/kinetixui/04-charts.jpg 1600w" sizes="(min-width: 1000px) 1000px, 100vw" width="1600" height="815" alt="Charts — Recharts-backed recipes driven entirely by the chart tokens" loading="lazy" decoding="async">
+</picture></div>
+    <div class="case-sticky-image" data-step="3"><picture>
+  <source type="image/webp" srcset="/assets/images/kinetixui/07-docs-640.webp 640w, /assets/images/kinetixui/07-docs-960.webp 960w, /assets/images/kinetixui/07-docs-1280.webp 1280w, /assets/images/kinetixui/07-docs.webp 1600w" sizes="(min-width: 1000px) 1000px, 100vw">
+  <img src="/assets/images/kinetixui/07-docs.jpg" srcset="/assets/images/kinetixui/07-docs-640.jpg 640w, /assets/images/kinetixui/07-docs-960.jpg 960w, /assets/images/kinetixui/07-docs-1280.jpg 1280w, /assets/images/kinetixui/07-docs.jpg 1600w" sizes="(min-width: 1000px) 1000px, 100vw" width="1600" height="815" alt="Docs — the introduction page, built on the library it documents" loading="lazy" decoding="async">
+</picture></div>
+  </div>
+</section>
+
+<!-- SHIP -->
+<section class="case-section">
+  <h2>The ship.</h2>
+  <div class="copy">
+    <p>KinetixUI shipped as three published npm packages (<code>@kinetixui/tokens</code>, <code>@kinetixui/ui</code>, <code>@kinetixui/cli</code>) sharing one version line, released through Changesets on every merge to main; a Gradle package for Jetpack Compose, a SwiftPM package for SwiftUI and a Dart package for Flutter, each compiled and tested per-platform in CI; and kinetixui.com itself — docs, component gallery, colour system, chart gallery and a theme builder — built entirely on the library it documents.</p>
+    <p>The four-platform rule is enforced, not aspirational: a component isn't considered done until it exists on all four surfaces or is a documented exception, and CI fails the build if the generated token output or registry drifts from source.</p>
+  </div>
+</section>
+
+<!-- WHAT SHIPPED -->
+<section class="case-outcomes">
+  <div class="case-outcomes-grid">
+    <h2>What shipped.</h2>
+    <div class="outcomes-list">
+      <div class="outcome-card">
+        <div class="outcome-num">72</div>
+        <div class="outcome-label">Components</div>
+        <div class="outcome-desc">Built once in React, ported 1:1 to SwiftUI, Jetpack Compose and Flutter — ~68 with full native parity today.</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">4</div>
+        <div class="outcome-label">Platforms, one contract</div>
+        <div class="outcome-desc">React, SwiftUI, Jetpack Compose and Flutter, all re-themed by editing the same token source.</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">0</div>
+        <div class="outcome-label">Runtime dependencies</div>
+        <div class="outcome-desc">Components are copied into your codebase via the CLI, not installed as a version you don't control.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEARNINGS -->
+<section class="case-section">
+  <h2>What I'd do again.</h2>
+  <div class="copy">
+    <p><strong>Synthesize dark mode as its own palette, not a mirror.</strong> The source file never had one — flipping lightness on the light ramp read muddy and failed contrast in exactly the places focus rings and destructive actions needed it most. Building an independent dark palette from the start cost more upfront and paid it back every theme since.</p>
+    <p><strong>Audit the auditor.</strong> The contrast-check script that gated every release had a resolver bug silently skipping one token pair — and the docs page cited that same script as proof everything passed. A script you trust for compliance needs its own review, not just a green check mark.</p>
+    <p><strong>Ownership is the feature, not a footnote.</strong> Letting people copy a component's real source in, instead of importing a black box, turned "can you customize this one button" from a fork-the-library problem into a one-file edit.</p>
+  </div>
+</section>
+
+<!-- NEXT -->
+<a href="/case-study-fabrihub.html" class="next-project">
+  <span class="label">Next case</span>
+  <div class="display title">FabriHub <span class="arrow">→</span></div>
+</a>
+
+</main>
+
+
+<footer class="footer">
+  <div class="footer-big">
+    Have a project? <a href="/contact.html"><em>Let's talk →</em></a>
+  </div>
+  <div class="footer-grid">
+    <div>
+      <h3>Sitemap</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/portfolio.html">Work</a></li>
+        <li><a href="/blog.html">Journal</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/learning-hub/">Learning Hub</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Elsewhere</h3>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/ziadfteha/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="/feed.xml">RSS feed ↗</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Get in touch</h3>
+      <ul>
+        <li><a href="mailto:ziadfteha@gmail.com">ziadfteha@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-meta">
+    <span>© 2026 Zed Alleys · All rights reserved</span>
+    <span>Designed &amp; built with care · Riyadh</span>
+  </div>
+</footer>
+
+
+<script src="/scripts/interactions.js"></script>
+<script src="/scripts/case-study.js" defer></script>
+</body>
+</html>
