@@ -34,6 +34,9 @@
   font-family: var(--font-mono);
   font-size: 12px;
 }
+.case-hero-link {
+  margin-top: 40px;
+}
 .case-hero .meta-item .label {
   color: var(--ink-dim);
   letter-spacing: 0.1em;
