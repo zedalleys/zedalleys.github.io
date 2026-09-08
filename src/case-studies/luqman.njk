@@ -29,46 +29,41 @@ jsonld:
     url: https://zedalleys.com/case-study-luqman.html
     image: https://zedalleys.com/assets/images/luqman/04-world-map.jpg
 ---
+{% import "partials/case-study-macros.njk" as cs %}
 <main>
 
-<header class="case-hero">
-  <div class="breadcrumb">
-    <a href="/portfolio.html">← Work</a>
-    <span>/</span>
-    <span>Dalael Centre · Real project</span>
-  </div>
-  <h1 class="display split-line">Luqman <em>Explorers.</em></h1>
-  <div class="meta-row">
-    <div class="meta-item"><span class="label">Client</span><span class="value">Dalael Centre</span></div>
-    <div class="meta-item"><span class="label">Role</span><span class="value">Product & UX/UI Designer</span></div>
-    <div class="meta-item"><span class="label">Team</span><span class="value">Design + Dalael content team</span></div>
-    <div class="meta-item"><span class="label">Timeline</span><span class="value">2021 – 2022</span></div>
-    <div class="meta-item"><span class="label">Platform</span><span class="value">Web app · Arabic (RTL)</span></div>
-  </div>
-</header>
+{% call cs.caseHero() %}
+<div class="breadcrumb">
+  <a href="/portfolio.html">← Work</a>
+  <span>/</span>
+  <span>Dalael Centre · Real project</span>
+</div>
+<h1 class="display split-line">Luqman <em>Explorers.</em></h1>
+<div class="meta-row">
+  <div class="meta-item"><span class="label">Client</span><span class="value">Dalael Centre</span></div>
+  <div class="meta-item"><span class="label">Role</span><span class="value">Product & UX/UI Designer</span></div>
+  <div class="meta-item"><span class="label">Team</span><span class="value">Design + Dalael content team</span></div>
+  <div class="meta-item"><span class="label">Timeline</span><span class="value">2021 – 2022</span></div>
+  <div class="meta-item"><span class="label">Platform</span><span class="value">Web app · Arabic (RTL)</span></div>
+</div>
+{% endcall %}
 
 <div class="case-hero-image">
   {% figure "luqman/01-hero", "Luqman landing page — 'Discover the world with Luqman'", 1600, 1250, "eager" %}
 </div>
 
 <!-- BRIEF -->
-<section class="case-section">
-  <h2>The brief.</h2>
-  <div class="copy">
-    <p>Dalael Centre teaches children's character and Islamic values through Qur'anic stories — patience, honesty, brotherhood — the kind of material that usually lives in a worksheet or a PDF. It gets finished because a parent asked, not because a child wants to open it again tomorrow.</p>
-    <p>They came to us for a web app. Not a course, not a quiz bank — something a kid would choose to come back to on their own.</p>
-    <div class="pull-quote">"Don't build a classroom. Build somewhere they want to go back to."</div>
-  </div>
-</section>
+{% call cs.caseSection("The brief.") %}
+<p>Dalael Centre teaches children's character and Islamic values through Qur'anic stories — patience, honesty, brotherhood — the kind of material that usually lives in a worksheet or a PDF. It gets finished because a parent asked, not because a child wants to open it again tomorrow.</p>
+<p>They came to us for a web app. Not a course, not a quiz bank — something a kid would choose to come back to on their own.</p>
+<div class="pull-quote">"Don't build a classroom. Build somewhere they want to go back to."</div>
+{% endcall %}
 
 <!-- IDEA -->
-<section class="case-section">
-  <h2>The idea.</h2>
-  <div class="copy">
-    <p>Instead of designing a curriculum, we designed a trip. Every child signs up as an <strong>Explorer</strong> — boy or girl, their own little scout avatar — picks a country and an age, and lands on a hand‑drawn world map dotted with <strong>camps</strong> (معسكرات).</p>
-    <p>Each camp is built around one story: <strong>الفتيان</strong> — the Youths of the Cave, a Qur'anic story of faith and friendship — was one of the camps live at launch, alongside a camp on friendship itself. Organizations and schools can also spin up private camps of their own for their own kids.</p>
-  </div>
-</section>
+{% call cs.caseSection("The idea.") %}
+<p>Instead of designing a curriculum, we designed a trip. Every child signs up as an <strong>Explorer</strong> — boy or girl, their own little scout avatar — picks a country and an age, and lands on a hand‑drawn world map dotted with <strong>camps</strong> (معسكرات).</p>
+<p>Each camp is built around one story: <strong>الفتيان</strong> — the Youths of the Cave, a Qur'anic story of faith and friendship — was one of the camps live at launch, alongside a camp on friendship itself. Organizations and schools can also spin up private camps of their own for their own kids.</p>
+{% endcall %}
 
 <div class="case-images">
   <div class="placeholder">{% figure "luqman/02-explorer-role", "Onboarding — choose your Explorer avatar", 1600, 900 %}</div>
@@ -116,41 +111,33 @@ jsonld:
 </section>
 
 <!-- SHIP -->
-<section class="case-section">
-  <h2>The ship.</h2>
-  <div class="copy">
-    <p>Luqman shipped as part of Dalael Centre's Arabic‑language offering — built right‑to‑left from the first wireframe, not retrofitted afterward. Two public camps ran at launch, with the private‑camp model letting schools and community groups run their own cohorts on the same system.</p>
-    <p>A separate guardian account type sits alongside the Explorer account, so a parent can watch a child's progress without ever taking over their map — the passport, badges and certificates stay the child's own.</p>
-  </div>
-</section>
+{% call cs.caseSection("The ship.") %}
+<p>Luqman shipped as part of Dalael Centre's Arabic‑language offering — built right‑to‑left from the first wireframe, not retrofitted afterward. Two public camps ran at launch, with the private‑camp model letting schools and community groups run their own cohorts on the same system.</p>
+<p>A separate guardian account type sits alongside the Explorer account, so a parent can watch a child's progress without ever taking over their map — the passport, badges and certificates stay the child's own.</p>
+{% endcall %}
 
 <div class="case-images full">
   <div class="placeholder">{% figure "luqman/06-camp-inner", "Inside a camp — journeys framed by their Qur'anic verse", 1600, 900 %}</div>
 </div>
 
 <!-- WHAT SHIPPED -->
-<section class="case-outcomes">
-  <div class="case-outcomes-grid">
-    <h2>What shipped.</h2>
-    <div class="outcomes-list">
-      <div class="outcome-card">
-        <div class="outcome-num">3</div>
-        <div class="outcome-label">Reward tiers</div>
-        <div class="outcome-desc">Badges per journey, medals per camp, a certificate per program — completion made visible at every scale.</div>
-      </div>
-      <div class="outcome-card">
-        <div class="outcome-num">2</div>
-        <div class="outcome-label">Account types</div>
-        <div class="outcome-desc">Explorer accounts for kids, guardian accounts for parents, sharing one map without sharing one login.</div>
-      </div>
-      <div class="outcome-card">
-        <div class="outcome-num">RTL</div>
-        <div class="outcome-label">Arabic‑first</div>
-        <div class="outcome-desc">Designed right‑to‑left from the first wireframe — layout, iconography and motion all mirrored on purpose.</div>
-      </div>
-    </div>
-  </div>
-</section>
+{% call cs.caseOutcomes() %}
+<div class="outcome-card">
+  <div class="outcome-num">3</div>
+  <div class="outcome-label">Reward tiers</div>
+  <div class="outcome-desc">Badges per journey, medals per camp, a certificate per program — completion made visible at every scale.</div>
+</div>
+<div class="outcome-card">
+  <div class="outcome-num">2</div>
+  <div class="outcome-label">Account types</div>
+  <div class="outcome-desc">Explorer accounts for kids, guardian accounts for parents, sharing one map without sharing one login.</div>
+</div>
+<div class="outcome-card">
+  <div class="outcome-num">RTL</div>
+  <div class="outcome-label">Arabic‑first</div>
+  <div class="outcome-desc">Designed right‑to‑left from the first wireframe — layout, iconography and motion all mirrored on purpose.</div>
+</div>
+{% endcall %}
 
 <div class="case-images">
   <div class="placeholder">{% figure "luqman/09-certificate", "Downloadable certificate of completion", 1600, 900 %}</div>
@@ -158,19 +145,13 @@ jsonld:
 </div>
 
 <!-- LEARNINGS -->
-<section class="case-section">
-  <h2>What I'd do again.</h2>
-  <div class="copy">
-    <p><strong>Borrow a metaphor kids already trust.</strong> A passport, a campfire, a badge — none of it needed explaining, which meant the onboarding copy everywhere else could stay short.</p>
-    <p><strong>Reward the small unit, not just the big one.</strong> Daily missions needed their own tiny payoff, or the passport felt too far away to matter on an ordinary Tuesday.</p>
-    <p><strong>Write for the child, review with the parent.</strong> Every task label went through a two‑person read: does an eight‑year‑old find this rewarding, and does a parent recognize the story it's teaching?</p>
-  </div>
-</section>
+{% call cs.caseSection("What I'd do again.") %}
+<p><strong>Borrow a metaphor kids already trust.</strong> A passport, a campfire, a badge — none of it needed explaining, which meant the onboarding copy everywhere else could stay short.</p>
+<p><strong>Reward the small unit, not just the big one.</strong> Daily missions needed their own tiny payoff, or the passport felt too far away to matter on an ordinary Tuesday.</p>
+<p><strong>Write for the child, review with the parent.</strong> Every task label went through a two‑person read: does an eight‑year‑old find this rewarding, and does a parent recognize the story it's teaching?</p>
+{% endcall %}
 
 <!-- NEXT -->
-<a href="/case-study-fabrihub.html" class="next-project">
-  <span class="label">Next case</span>
-  <div class="display title">FabriHub <span class="arrow">→</span></div>
-</a>
+{{ cs.nextProject("/case-study-fabrihub.html", "FabriHub") }}
 
 </main>

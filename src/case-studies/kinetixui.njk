@@ -29,47 +29,42 @@ jsonld:
     url: https://zedalleys.com/case-study-kinetixui.html
     image: https://zedalleys.com/assets/images/kinetixui/01-hero.jpg
 ---
+{% import "partials/case-study-macros.njk" as cs %}
 <main>
 
-<header class="case-hero">
-  <div class="breadcrumb">
-    <a href="/portfolio.html">← Work</a>
-    <span>/</span>
-    <span>Kinetixui Library · Open-source, self-initiated</span>
-  </div>
-  <h1 class="display split-line">Kinetixui <em>Library.</em></h1>
-  <div class="meta-row">
-    <div class="meta-item"><span class="label">Client</span><span class="value">Kinetix / Open-source</span></div>
-    <div class="meta-item"><span class="label">Role</span><span class="value">Founder — Design &amp; Engineering</span></div>
-    <div class="meta-item"><span class="label">Team</span><span class="value">Open to contributions</span></div>
-    <div class="meta-item"><span class="label">Timeline</span><span class="value">2026 — ongoing (beta)</span></div>
-    <div class="meta-item"><span class="label">Platform</span><span class="value">React, SwiftUI, Compose, Flutter</span></div>
-  </div>
-  <a href="https://kinetixui.com" target="_blank" rel="noopener" class="btn magnetic case-hero-link"><span>Visit kinetixui.com</span><span>↗</span></a>
-</header>
+{% call cs.caseHero() %}
+<div class="breadcrumb">
+  <a href="/portfolio.html">← Work</a>
+  <span>/</span>
+  <span>Kinetixui Library · Open-source, self-initiated</span>
+</div>
+<h1 class="display split-line">Kinetixui <em>Library.</em></h1>
+<div class="meta-row">
+  <div class="meta-item"><span class="label">Client</span><span class="value">Kinetix / Open-source</span></div>
+  <div class="meta-item"><span class="label">Role</span><span class="value">Founder — Design &amp; Engineering</span></div>
+  <div class="meta-item"><span class="label">Team</span><span class="value">Open to contributions</span></div>
+  <div class="meta-item"><span class="label">Timeline</span><span class="value">2026 — ongoing (beta)</span></div>
+  <div class="meta-item"><span class="label">Platform</span><span class="value">React, SwiftUI, Compose, Flutter</span></div>
+</div>
+<a href="https://kinetixui.com" target="_blank" rel="noopener" class="btn magnetic case-hero-link"><span>Visit kinetixui.com</span><span>↗</span></a>
+{% endcall %}
 
 <div class="case-hero-image">
   {% figure "kinetixui/01-hero", "KinetixUI homepage — 'One token architecture, in motion across every platform'", 1600, 815, "eager" %}
 </div>
 
 <!-- BRIEF -->
-<section class="case-section">
-  <h2>The brief.</h2>
-  <div class="copy">
-    <p>Every product I'd shipped that spanned web and native ended up with the same quiet tax: a button re-built by hand in React, then again in Swift, then again in Kotlin, each one drifting a shade further from the Figma file every quarter. Dark mode diverged first, then spacing, then which shade of "primary" a given screen actually used.</p>
-    <p>I set myself the brief I'd have given a client: one design source, no re-implementation, no drift — and it has to hold up under a real accessibility standard, not just look consistent.</p>
-    <div class="pull-quote">"Change the token once. It propagates everywhere, or the system has failed."</div>
-  </div>
-</section>
+{% call cs.caseSection("The brief.") %}
+<p>Every product I'd shipped that spanned web and native ended up with the same quiet tax: a button re-built by hand in React, then again in Swift, then again in Kotlin, each one drifting a shade further from the Figma file every quarter. Dark mode diverged first, then spacing, then which shade of "primary" a given screen actually used.</p>
+<p>I set myself the brief I'd have given a client: one design source, no re-implementation, no drift — and it has to hold up under a real accessibility standard, not just look consistent.</p>
+<div class="pull-quote">"Change the token once. It propagates everywhere, or the system has failed."</div>
+{% endcall %}
 
 <!-- IDEA -->
-<section class="case-section">
-  <h2>The idea.</h2>
-  <div class="copy">
-    <p>KinetixUI compiles a single DTCG token source — extracted straight from the Figma file — through Style Dictionary into CSS custom properties, a typed TypeScript object, and native colour and type sets for SwiftUI, Jetpack Compose and Flutter. Every one of the 72 components is styled only against that semantic layer, never a hardcoded hex, so a token edit re-skins the button on all four platforms at once.</p>
-    <p>Installation works like ownership, not dependency: a first-party CLI (<code>npx @kinetixui/cli add button</code>) resolves a component's registry entry and writes the real source into your project — the same model shadcn popularized — rather than locking you to a version behind a black-box import.</p>
-  </div>
-</section>
+{% call cs.caseSection("The idea.") %}
+<p>KinetixUI compiles a single DTCG token source — extracted straight from the Figma file — through Style Dictionary into CSS custom properties, a typed TypeScript object, and native colour and type sets for SwiftUI, Jetpack Compose and Flutter. Every one of the 72 components is styled only against that semantic layer, never a hardcoded hex, so a token edit re-skins the button on all four platforms at once.</p>
+<p>Installation works like ownership, not dependency: a first-party CLI (<code>npx @kinetixui/cli add button</code>) resolves a component's registry entry and writes the real source into your project — the same model shadcn popularized — rather than locking you to a version behind a black-box import.</p>
+{% endcall %}
 
 <div class="case-images">
   <div class="placeholder">{% figure "kinetixui/02-components", "The component registry — 72 components across 7 categories, tagged by platform", 1600, 815 %}</div>
@@ -117,52 +112,38 @@ jsonld:
 </section>
 
 <!-- SHIP -->
-<section class="case-section">
-  <h2>The ship.</h2>
-  <div class="copy">
-    <p>KinetixUI shipped as three published npm packages (<code>@kinetixui/tokens</code>, <code>@kinetixui/ui</code>, <code>@kinetixui/cli</code>) sharing one version line, released through Changesets on every merge to main; a Gradle package for Jetpack Compose, a SwiftPM package for SwiftUI and a Dart package for Flutter, each compiled and tested per-platform in CI; and kinetixui.com itself — docs, component gallery, colour system, chart gallery and a theme builder — built entirely on the library it documents.</p>
-    <p>The four-platform rule is enforced, not aspirational: a component isn't considered done until it exists on all four surfaces or is a documented exception, and CI fails the build if the generated token output or registry drifts from source.</p>
-  </div>
-</section>
+{% call cs.caseSection("The ship.") %}
+<p>KinetixUI shipped as three published npm packages (<code>@kinetixui/tokens</code>, <code>@kinetixui/ui</code>, <code>@kinetixui/cli</code>) sharing one version line, released through Changesets on every merge to main; a Gradle package for Jetpack Compose, a SwiftPM package for SwiftUI and a Dart package for Flutter, each compiled and tested per-platform in CI; and kinetixui.com itself — docs, component gallery, colour system, chart gallery and a theme builder — built entirely on the library it documents.</p>
+<p>The four-platform rule is enforced, not aspirational: a component isn't considered done until it exists on all four surfaces or is a documented exception, and CI fails the build if the generated token output or registry drifts from source.</p>
+{% endcall %}
 
 <!-- WHAT SHIPPED -->
-<section class="case-outcomes">
-  <div class="case-outcomes-grid">
-    <h2>What shipped.</h2>
-    <div class="outcomes-list">
-      <div class="outcome-card">
-        <div class="outcome-num">72</div>
-        <div class="outcome-label">Components</div>
-        <div class="outcome-desc">Built once in React, ported 1:1 to SwiftUI, Jetpack Compose and Flutter — ~68 with full native parity today.</div>
-      </div>
-      <div class="outcome-card">
-        <div class="outcome-num">4</div>
-        <div class="outcome-label">Platforms, one contract</div>
-        <div class="outcome-desc">React, SwiftUI, Jetpack Compose and Flutter, all re-themed by editing the same token source.</div>
-      </div>
-      <div class="outcome-card">
-        <div class="outcome-num">0</div>
-        <div class="outcome-label">Runtime dependencies</div>
-        <div class="outcome-desc">Components are copied into your codebase via the CLI, not installed as a version you don't control.</div>
-      </div>
-    </div>
-  </div>
-</section>
+{% call cs.caseOutcomes() %}
+<div class="outcome-card">
+  <div class="outcome-num">72</div>
+  <div class="outcome-label">Components</div>
+  <div class="outcome-desc">Built once in React, ported 1:1 to SwiftUI, Jetpack Compose and Flutter — ~68 with full native parity today.</div>
+</div>
+<div class="outcome-card">
+  <div class="outcome-num">4</div>
+  <div class="outcome-label">Platforms, one contract</div>
+  <div class="outcome-desc">React, SwiftUI, Jetpack Compose and Flutter, all re-themed by editing the same token source.</div>
+</div>
+<div class="outcome-card">
+  <div class="outcome-num">0</div>
+  <div class="outcome-label">Runtime dependencies</div>
+  <div class="outcome-desc">Components are copied into your codebase via the CLI, not installed as a version you don't control.</div>
+</div>
+{% endcall %}
 
 <!-- LEARNINGS -->
-<section class="case-section">
-  <h2>What I'd do again.</h2>
-  <div class="copy">
-    <p><strong>Synthesize dark mode as its own palette, not a mirror.</strong> The source file never had one — flipping lightness on the light ramp read muddy and failed contrast in exactly the places focus rings and destructive actions needed it most. Building an independent dark palette from the start cost more upfront and paid it back every theme since.</p>
-    <p><strong>Audit the auditor.</strong> The contrast-check script that gated every release had a resolver bug silently skipping one token pair — and the docs page cited that same script as proof everything passed. A script you trust for compliance needs its own review, not just a green check mark.</p>
-    <p><strong>Ownership is the feature, not a footnote.</strong> Letting people copy a component's real source in, instead of importing a black box, turned "can you customize this one button" from a fork-the-library problem into a one-file edit.</p>
-  </div>
-</section>
+{% call cs.caseSection("What I'd do again.") %}
+<p><strong>Synthesize dark mode as its own palette, not a mirror.</strong> The source file never had one — flipping lightness on the light ramp read muddy and failed contrast in exactly the places focus rings and destructive actions needed it most. Building an independent dark palette from the start cost more upfront and paid it back every theme since.</p>
+<p><strong>Audit the auditor.</strong> The contrast-check script that gated every release had a resolver bug silently skipping one token pair — and the docs page cited that same script as proof everything passed. A script you trust for compliance needs its own review, not just a green check mark.</p>
+<p><strong>Ownership is the feature, not a footnote.</strong> Letting people copy a component's real source in, instead of importing a black box, turned "can you customize this one button" from a fork-the-library problem into a one-file edit.</p>
+{% endcall %}
 
 <!-- NEXT -->
-<a href="/case-study-reportage.html" class="next-project">
-  <span class="label">Next case</span>
-  <div class="display title">Reportage <span class="arrow">→</span></div>
-</a>
+{{ cs.nextProject("/case-study-reportage.html", "Reportage") }}
 
 </main>

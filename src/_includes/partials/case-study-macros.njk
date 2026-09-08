@@ -1,0 +1,40 @@
+{#- Shared structural wrappers for the case-study pages (src/case-studies/*.njk).
+   Every case study repeats the same hero / section / outcomes / next-project
+   skeleton with different prose and images — these macros hold that skeleton
+   in one place so a structural change (e.g. the outcomes grid markup) is a
+   one-file edit instead of five. Content stays exactly where it is today,
+   passed in via {% call %} blocks, so nothing here ever touches or re-escapes
+   the actual case-study text. -#}
+
+{%- macro caseHero() -%}
+<header class="case-hero">
+  {{ caller() }}
+</header>
+{%- endmacro -%}
+
+{%- macro caseSection(heading) -%}
+<section class="case-section">
+  <h2>{{ heading | safe }}</h2>
+  <div class="copy">
+    {{ caller() }}
+  </div>
+</section>
+{%- endmacro -%}
+
+{%- macro caseOutcomes() -%}
+<section class="case-outcomes">
+  <div class="case-outcomes-grid">
+    <h2>What shipped.</h2>
+    <div class="outcomes-list">
+      {{ caller() }}
+    </div>
+  </div>
+</section>
+{%- endmacro -%}
+
+{%- macro nextProject(href, label) -%}
+<a href="{{ href | safe }}" class="next-project">
+  <span class="label">Next case</span>
+  <div class="display title">{{ label | safe }} <span class="arrow">→</span></div>
+</a>
+{%- endmacro -%}
