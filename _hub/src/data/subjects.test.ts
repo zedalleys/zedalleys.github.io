@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { subjects } from './subjects';
 import { categories } from './categories';
-import { roadmapCategories } from './roadmap';
 import { getAllSteps } from '../lib/storage';
 
 // These tests guard the hand-authored course content. `subjects.ts` and its
@@ -89,35 +88,6 @@ describe('categories.ts', () => {
       for (const id of category.subjectIds) {
         expect(seen.has(id), `subject "${id}" is in more than one category`).toBe(false);
         seen.add(id);
-      }
-    }
-  });
-});
-
-describe('roadmap.ts', () => {
-  it('has unique category ids', () => {
-    const ids = roadmapCategories.map((c) => c.id);
-    expect(new Set(ids).size).toBe(ids.length);
-  });
-
-  it('every written section is well-formed', () => {
-    for (const category of roadmapCategories) {
-      expect(category.label.trim()).not.toBe('');
-      if (!category.sections) continue;
-
-      const sectionIds = category.sections.map((s) => s.id);
-      expect(new Set(sectionIds).size, `duplicate section id in "${category.id}"`).toBe(
-        sectionIds.length,
-      );
-
-      for (const section of category.sections) {
-        expect(section.title.trim()).not.toBe('');
-        expect(section.clusters.length).toBeGreaterThan(0);
-        for (const cluster of section.clusters) {
-          expect(cluster.title.trim()).not.toBe('');
-          expect(cluster.items.length).toBeGreaterThan(0);
-          expect(cluster.items.every((i) => i.trim() !== '')).toBe(true);
-        }
       }
     }
   });

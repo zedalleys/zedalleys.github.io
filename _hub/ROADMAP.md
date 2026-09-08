@@ -36,6 +36,11 @@
       oxlint
 - [x] Plausible analytics on the hub (`script.hash.js`, shared
       `zedalleys.com` property)
+- [x] Roadmaps moved out of the hub into a standalone site page at
+      `/roadmaps.html` (data + template + styles now live in the main
+      Eleventy build), so it's a peer of Work / Journal / Learning Hub in
+      the nav rather than a route nested under the hub. The hub nav links
+      out to it like any other site page.
 
 ## Rebrand + integrate as the "Learning Hub" tab
 

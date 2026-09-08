@@ -46,8 +46,9 @@ Type-checking runs as part of `npm run build` (`tsc -b && vite build`).
   renders it to a `<canvas>`, and lets the user download it as a PNG or share
   it to LinkedIn / X / Facebook.
 - All progress (which steps are done, the certificate name) is stored in the
-  browser's `localStorage` under the key `ux-learning-progress`. There is no
-  backend — see the Roadmap for what a real account/sync system would need.
+  browser's `localStorage` under the key `ux-learning-progress`. This is
+  deliberate — no accounts, no login, no sync (see ROADMAP.md). Clearing
+  site data or switching browsers starts the path over.
 
 ## Certificate verification
 
