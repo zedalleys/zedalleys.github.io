@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self'; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.supabase.co; form-action 'self'; base-uri 'self'; object-src 'none'"
+      content="default-src 'self'; script-src 'self' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self'; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.supabase.co https://plausible.io; form-action 'self'; base-uri 'self'; object-src 'none'"
     />
     <link rel="icon" type="image/png" href="/learning-hub/zed-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,7 +14,13 @@
       content="Zed Alleys Learning Hub — bite-sized UX & design lessons with quizzes and shareable certificates."
     />
     <title>Learning Hub — Zed Alleys</title>
-    <script type="module" crossorigin src="/learning-hub/assets/index-I0BKrC2O.js"></script>
+    <!--
+      Shares the main site's Plausible property (data-domain=zedalleys.com).
+      script.hash.js is the hash-routing build: the hub is a HashRouter SPA,
+      so this reports each `#/subjects/...` route as its own pageview.
+    -->
+    <script defer data-domain="zedalleys.com" src="https://plausible.io/js/script.hash.js"></script>
+    <script type="module" crossorigin src="/learning-hub/assets/index-CMnxJO5_.js"></script>
     <link rel="stylesheet" crossorigin href="/learning-hub/assets/index-DYoA422V.css">
   </head>
   <body>

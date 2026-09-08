@@ -1,14 +1,32 @@
 import { useState } from 'react';
 import type { QuizQuestion } from '../types';
+import { shuffle } from '../lib/shuffle';
 
 interface QuizBlockProps {
   quiz: QuizQuestion[];
   onPass: () => void;
 }
 
+/** Per-question display order, as a list of original option indices. */
+type OptionOrders = Record<string, number[]>;
+
+function buildOrders(quiz: QuizQuestion[]): OptionOrders {
+  const orders: OptionOrders = {};
+  for (const q of quiz) {
+    orders[q.id] = shuffle(q.options.map((_, i) => i));
+  }
+  return orders;
+}
+
 export function QuizBlock({ quiz, onPass }: QuizBlockProps) {
+  // Answers are keyed by question id and stored as *original* option
+  // indices, so the correctness checks and `correctIndex` comparisons
+  // below don't care how the options are currently arranged on screen.
   const [answers, setAnswers] = useState<Record<string, number | undefined>>({});
   const [checked, setChecked] = useState(false);
+  // Option order is randomised per mount and re-randomised on "Try again",
+  // so a failed retry isn't just "remember which button I clicked".
+  const [optionOrders, setOptionOrders] = useState<OptionOrders>(() => buildOrders(quiz));
 
   const allAnswered = quiz.every((q) => answers[q.id] !== undefined);
   const allCorrect = checked && quiz.every((q) => answers[q.id] === q.correctIndex);
@@ -26,6 +44,7 @@ export function QuizBlock({ quiz, onPass }: QuizBlockProps) {
   function handleRetry() {
     setAnswers({});
     setChecked(false);
+    setOptionOrders(buildOrders(quiz));
   }
 
   return (
@@ -35,18 +54,20 @@ export function QuizBlock({ quiz, onPass }: QuizBlockProps) {
         const selected = answers[question.id];
         const isCorrect = checked && selected === question.correctIndex;
         const isWrong = checked && selected !== undefined && selected !== question.correctIndex;
+        const order = optionOrders[question.id] ?? question.options.map((_, i) => i);
 
         return (
           <div key={question.id} className="quiz-question">
             <p className="quiz-question__prompt">{qi + 1}. {question.question}</p>
             <div className="quiz-question__options">
-              {question.options.map((option, oi) => {
-                const isSelected = selected === oi;
-                const showAsCorrect = checked && oi === question.correctIndex;
-                const showAsIncorrect = checked && isSelected && oi !== question.correctIndex;
+              {order.map((optionIndex) => {
+                const option = question.options[optionIndex];
+                const isSelected = selected === optionIndex;
+                const showAsCorrect = checked && optionIndex === question.correctIndex;
+                const showAsIncorrect = checked && isSelected && optionIndex !== question.correctIndex;
                 return (
                   <button
-                    key={oi}
+                    key={optionIndex}
                     type="button"
                     className={[
                       'quiz-option',
@@ -54,7 +75,7 @@ export function QuizBlock({ quiz, onPass }: QuizBlockProps) {
                       showAsCorrect ? 'quiz-option--correct' : '',
                       showAsIncorrect ? 'quiz-option--incorrect' : '',
                     ].join(' ').trim()}
-                    onClick={() => selectOption(question.id, oi)}
+                    onClick={() => selectOption(question.id, optionIndex)}
                     disabled={checked && allCorrect}
                   >
                     {option}

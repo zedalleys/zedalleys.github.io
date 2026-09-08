@@ -4,7 +4,7 @@ import { subjects } from '../data/subjects';
 import { ProgressBar } from '../components/ProgressBar';
 import { QuizBlock } from '../components/QuizBlock';
 import { QuizReview } from '../components/QuizReview';
-import { getAllSteps, getSubjectProgress, getSubjectStats, isStepComplete, markStepComplete } from '../lib/storage';
+import { getAllSteps, getStepUnlockInfo, getSubjectStats, markStepComplete } from '../lib/storage';
 import { useDocumentMeta } from '../lib/useDocumentMeta';
 
 export function StepPage() {
@@ -22,9 +22,7 @@ export function StepPage() {
   if (!subject) return <Navigate to="/" replace />;
   if (!step) return <Navigate to={`/subjects/${subject.id}`} replace />;
 
-  const progress = getSubjectProgress(subject.id);
-  const previousComplete = stepIndex === 0 || progress.completedSteps.includes(flatSteps[stepIndex - 1].id);
-  const alreadyComplete = isStepComplete(subject.id, step.id);
+  const { isComplete: alreadyComplete, previousComplete } = getStepUnlockInfo(subject, step.id);
   if (!previousComplete && !alreadyComplete) {
     return <Navigate to={`/subjects/${subject.id}`} replace />;
   }
@@ -76,10 +74,16 @@ export function StepPage() {
         ))}
       </div>
 
+      {/*
+        Keyed by step id so navigating straight from one step to the next
+        (via "Complete step →" or the nav links) gives a fresh quiz —
+        otherwise the component keeps its position in the tree and carries
+        the previous step's answers and shuffled option order across.
+      */}
       {alreadyComplete && !practiceMode ? (
-        <QuizReview quiz={step.quiz} onRetake={() => setPracticeMode(true)} />
+        <QuizReview key={step.id} quiz={step.quiz} onRetake={() => setPracticeMode(true)} />
       ) : (
-        <QuizBlock quiz={step.quiz} onPass={handlePass} />
+        <QuizBlock key={step.id} quiz={step.quiz} onPass={handlePass} />
       )}
 
       {alreadyComplete && (
