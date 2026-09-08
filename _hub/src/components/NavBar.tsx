@@ -1,18 +1,27 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 
 /**
- * Site chrome for the Learning Hub, matching the Zed Alleys personal-site nav
- * (fixed, mix-blend, gains a blurred backdrop once the page scrolls under it).
- * The logo + "Alleys" link back out to the main site home; the "Learning Hub"
- * wordmark links to the hub's own home (the subjects list) — there is no
- * separate "Subjects" nav item, since that wordmark and the in-page
- * "← All subjects" links already do that job.
+ * The Zed Alleys personal-site nav, reproduced with the same markup/classes
+ * as src/_includes/partials/nav.njk (see ../App.css) so the Learning Hub
+ * reads as a continuation of the same site rather than a sub-app with its
+ * own chrome. "Learning Hub" is always the active link here — getting back
+ * into a subject or step uses the in-page "← All subjects" / "← Back to
+ * path" links, not this nav.
  */
-const SITE_URL = 'https://zedalleys.com';
+const NAV_LINKS = [
+  { href: '/', label: 'Home' },
+  { href: '/about.html', label: 'About' },
+  { href: '/portfolio.html', label: 'Work' },
+  { href: '/blog.html', label: 'Journal' },
+  { href: '/contact.html', label: 'Contact' },
+  { href: '/learning-hub/', label: 'Learning Hub', active: true },
+];
 
 export function NavBar() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navToggleRef = useRef<HTMLButtonElement>(null);
+  const navLinksRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -21,16 +30,84 @@ export function NavBar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Lock page scroll behind the open mobile menu.
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
+  // Move focus into the panel, trap Tab within it, and close on Escape —
+  // mirrors the vanilla nav's keyboard behavior on the main site.
+  useEffect(() => {
+    if (!menuOpen) return;
+    navLinksRef.current?.querySelector<HTMLAnchorElement>('.nav-link')?.focus();
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMenuOpen(false);
+        navToggleRef.current?.focus();
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      const focusable = [
+        navToggleRef.current,
+        ...(navLinksRef.current?.querySelectorAll<HTMLAnchorElement>('a[href]') ?? []),
+      ].filter((el) => el !== null) as (HTMLButtonElement | HTMLAnchorElement)[];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [menuOpen]);
+
   return (
-    <nav className={`hub-nav${scrolled ? ' is-scrolled' : ''}`}>
-      <div className="hub-nav__brand">
-        <a href={SITE_URL} className="hub-nav__home">
-          <img src={`${import.meta.env.BASE_URL}zed-logo-light.png`} alt="Zed Alleys" className="hub-nav__mark" />
-          <span className="hub-nav__word">Alleys</span>
-        </a>
-        <span className="hub-nav__divider" aria-hidden="true">/</span>
-        <Link to="/" className="hub-nav__tab">Learning Hub</Link>
+    <nav className={`nav${scrolled ? ' is-scrolled' : ''}${menuOpen ? ' is-menu-open' : ''}`}>
+      <a href="/" className="nav-brand">
+        <img
+          src="/assets/images/zed-logo-light.png"
+          alt="Zed Alleys"
+          className="brand-mark"
+          width={161}
+          height={60}
+        />
+        <span className="brand-word">Alleys</span>
+      </a>
+      <div className="nav-links" id="navLinks" ref={navLinksRef}>
+        {NAV_LINKS.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            className={`nav-link${link.active ? ' is-active' : ''}`}
+            aria-current={link.active ? 'page' : undefined}
+            onClick={() => setMenuOpen(false)}
+          >
+            {link.label}
+          </a>
+        ))}
       </div>
+      <button
+        type="button"
+        className="nav-toggle"
+        id="navToggle"
+        ref={navToggleRef}
+        aria-label="Toggle menu"
+        aria-expanded={menuOpen}
+        aria-controls="navLinks"
+        onClick={() => setMenuOpen((open) => !open)}
+      >
+        <span className="nav-toggle-bar" />
+        <span className="nav-toggle-bar" />
+        <span className="nav-toggle-bar" />
+      </button>
     </nav>
   );
 }
