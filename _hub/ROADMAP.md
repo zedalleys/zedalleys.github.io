@@ -29,6 +29,13 @@
 - [x] Verifiable certificates: optional Supabase-backed registry, a public
       `/verify/:id` page, and share links that point at the verify page
       instead of the app root (see README's "Certificate verification")
+- [x] Quiz option order randomised per attempt (`src/lib/shuffle.ts`), so a
+      failed retry isn't a memory test
+- [x] Vitest suite covering the progress/unlock rules, certificate helpers,
+      and the integrity of the hand-authored content; runs in CI alongside
+      oxlint
+- [x] Plausible analytics on the hub (`script.hash.js`, shared
+      `zedalleys.com` property)
 
 ## Rebrand + integrate as the "Learning Hub" tab
 
@@ -75,29 +82,32 @@ Roughly in the order they'd likely matter, but not committed to:
   currently covered as one step inside UX Design Fundamentals). Next batch
   is planned to be built from reference material the user will provide,
   rather than written from scratch.
-- **Accounts + synced progress.** Right now progress is per-browser via
-  `localStorage`. Real accounts (email or OAuth) plus a small backend
-  (Supabase/Firebase are natural fits) would let progress and certificates
-  survive across devices and be the source of truth instead of the browser.
 - **Harden certificate issuance.** The current registry lets anyone with the
-  public anon key insert a row (see README caveat) — the real fix is
-  accounts, or at minimum moving issuance behind a Supabase Edge Function
-  that can rate-limit and validate server-side instead of a direct client
-  insert.
+  public anon key insert a row (see README caveat). Since accounts are off
+  the table (below), the fix is to move issuance behind a Supabase Edge
+  Function that can rate-limit and validate server-side instead of a direct
+  client insert.
 - **Content authoring UX.** `subjects.ts` is fine for one person editing by
   hand; if content volume grows a lot, a small JSON/YAML format or a simple
   local admin form could replace hand-written TS.
-- **Analytics.** Which steps people fail quizzes on repeatedly, drop-off per
-  subject — useful signal for which content needs rewriting.
+- **Analytics.** Plausible now runs on the hub (`script.hash.js`, same
+  `zedalleys.com` property), so per-route pageviews and drop-off are
+  visible. Still missing: custom events for *which* quiz questions get
+  failed repeatedly — the signal for which content needs rewriting.
 - **Search/filtering** on the home page once there are more than a handful
   of subjects.
-- **Randomized quiz option order / larger question pools per step**, so
-  retrying isn't just "remember which button I clicked last time."
+- **Larger question pools per step**, so retrying isn't just working through
+  a fixed set again. (Option order is already randomised per attempt.)
 - **Non-sequential / free navigation mode**, if locked sequential steps ever
   feel too restrictive for returning users who want to jump around.
 
 ## Explicitly out of scope for now
 
+- **Accounts / login / sync.** Deliberate: no registration, no sign-in.
+  Progress stays cached on the visitor's device (`localStorage`), and a
+  certificate is a one-off download. Clearing site data or switching
+  browsers starts over, and that's an accepted trade for keeping the hub a
+  zero-friction, no-PII feature of the personal site.
 - Native mobile app — this is a web feature of the personal site.
 - Multi-language content.
 - Anything resembling a full LMS (cohorts, instructors, grading dashboards).
