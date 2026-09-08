@@ -3,10 +3,13 @@ import { subjects } from '../data/subjects';
 import { PathMap } from '../components/PathMap';
 import { ProgressBar } from '../components/ProgressBar';
 import { getSubjectStats } from '../lib/storage';
+import { useDocumentMeta } from '../lib/useDocumentMeta';
 
 export function SubjectPathPage() {
   const { subjectId } = useParams();
   const subject = subjects.find((s) => s.id === subjectId);
+
+  useDocumentMeta(subject?.title ?? 'Subject', subject?.description ?? '');
 
   if (!subject) return <Navigate to="/" replace />;
 

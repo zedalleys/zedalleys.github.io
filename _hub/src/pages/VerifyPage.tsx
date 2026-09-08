@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { fetchCertificate, type VerifiedCertificate } from '../lib/certificateRegistry';
 import { isSupabaseConfigured } from '../lib/supabaseClient';
+import { useDocumentMeta } from '../lib/useDocumentMeta';
 
 export function VerifyPage() {
   const { certificateId } = useParams();
@@ -11,6 +12,13 @@ export function VerifyPage() {
     return 'loading';
   });
   const [certificate, setCertificate] = useState<VerifiedCertificate | null>(null);
+
+  useDocumentMeta(
+    'Verify certificate',
+    certificate
+      ? `Verified: ${certificate.recipientName} completed ${certificate.subjectTitle}.`
+      : 'Verify a Learning Hub certificate.',
+  );
 
   useEffect(() => {
     if (!isSupabaseConfigured || !certificateId) return;

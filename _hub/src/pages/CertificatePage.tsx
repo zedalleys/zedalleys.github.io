@@ -4,6 +4,7 @@ import { subjects } from '../data/subjects';
 import { getSubjectProgress, getSubjectStats, saveCertificateId, saveCertificateName } from '../lib/storage';
 import { issueCertificate } from '../lib/certificateRegistry';
 import { isSupabaseConfigured } from '../lib/supabaseClient';
+import { useDocumentMeta } from '../lib/useDocumentMeta';
 import {
   buildFacebookShareUrl,
   buildLinkedInShareUrl,
@@ -25,6 +26,11 @@ export function CertificatePage() {
   const [confirmedName, setConfirmedName] = useState(existingProgress?.certificateName ?? '');
   const [certificateId, setCertificateId] = useState(existingProgress?.certificateId);
   const [issuing, setIssuing] = useState(false);
+
+  useDocumentMeta(
+    subject ? `${subject.title} certificate` : 'Certificate',
+    subject ? `Certificate of completion for ${subject.title}.` : '',
+  );
 
   useEffect(() => {
     if (!subject || !canvasRef.current) return;

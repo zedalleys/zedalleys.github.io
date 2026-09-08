@@ -1,13 +1,21 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { HashRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { NavBar } from './components/NavBar';
 import { SiteFooter } from './components/SiteFooter';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { Home } from './pages/Home';
 import { SubjectPathPage } from './pages/SubjectPathPage';
 import { StepPage } from './pages/StepPage';
-import { CertificatePage } from './pages/CertificatePage';
-import { VerifyPage } from './pages/VerifyPage';
 import './App.css';
+
+// The certificate/verify routes pull in the Supabase client and the canvas
+// certificate renderer — real weight that most visitors (just reading a
+// lesson) never need. Splitting them out of the main chunk keeps the
+// common path lighter.
+const CertificatePage = lazy(() =>
+  import('./pages/CertificatePage').then((m) => ({ default: m.CertificatePage })),
+);
+const VerifyPage = lazy(() => import('./pages/VerifyPage').then((m) => ({ default: m.VerifyPage })));
 
 /**
  * Reset scroll to the top whenever the route changes. HashRouter does no
@@ -29,13 +37,17 @@ function App() {
       <ScrollToTop />
       <NavBar />
       <main className="hub-main">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/subjects/:subjectId" element={<SubjectPathPage />} />
-          <Route path="/subjects/:subjectId/steps/:stepId" element={<StepPage />} />
-          <Route path="/subjects/:subjectId/certificate" element={<CertificatePage />} />
-          <Route path="/verify/:certificateId" element={<VerifyPage />} />
-        </Routes>
+        <ErrorBoundary>
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/subjects/:subjectId" element={<SubjectPathPage />} />
+              <Route path="/subjects/:subjectId/steps/:stepId" element={<StepPage />} />
+              <Route path="/subjects/:subjectId/certificate" element={<CertificatePage />} />
+              <Route path="/verify/:certificateId" element={<VerifyPage />} />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
       </main>
       <SiteFooter />
     </HashRouter>

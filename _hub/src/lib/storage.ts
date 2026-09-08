@@ -12,7 +12,12 @@ function readAll(): ProgressState {
 }
 
 function writeAll(state: ProgressState): void {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch {
+    // Private-browsing quota or a full storage — progress just won't
+    // persist this time, which is better than crashing the app.
+  }
 }
 
 export function getSubjectProgress(subjectId: string): SubjectProgress {

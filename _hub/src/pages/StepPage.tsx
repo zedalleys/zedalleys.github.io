@@ -5,6 +5,7 @@ import { ProgressBar } from '../components/ProgressBar';
 import { QuizBlock } from '../components/QuizBlock';
 import { QuizReview } from '../components/QuizReview';
 import { getAllSteps, getSubjectProgress, getSubjectStats, isStepComplete, markStepComplete } from '../lib/storage';
+import { useDocumentMeta } from '../lib/useDocumentMeta';
 
 export function StepPage() {
   const { subjectId, stepId } = useParams();
@@ -12,12 +13,13 @@ export function StepPage() {
   const subject = subjects.find((s) => s.id === subjectId);
   const [practiceMode, setPracticeMode] = useState(false);
 
-  if (!subject) return <Navigate to="/" replace />;
-
-  const flatSteps = getAllSteps(subject);
+  const flatSteps = subject ? getAllSteps(subject) : [];
   const stepIndex = flatSteps.findIndex((s) => s.id === stepId);
   const step = flatSteps[stepIndex];
 
+  useDocumentMeta(step ? `${step.title} — ${subject?.title}` : 'Step', step?.summary ?? '');
+
+  if (!subject) return <Navigate to="/" replace />;
   if (!step) return <Navigate to={`/subjects/${subject.id}`} replace />;
 
   const progress = getSubjectProgress(subject.id);

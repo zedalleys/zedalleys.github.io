@@ -4,6 +4,7 @@ import { categories } from '../data/categories';
 import { SubjectCard } from '../components/SubjectCard';
 import { StatsSummary } from '../components/StatsSummary';
 import { getSubjectProgress, getSubjectStats } from '../lib/storage';
+import { useDocumentMeta } from '../lib/useDocumentMeta';
 import type { Subject } from '../types';
 
 function matchesQuery(subject: Subject, query: string): boolean {
@@ -12,6 +13,10 @@ function matchesQuery(subject: Subject, query: string): boolean {
 }
 
 export function Home() {
+  useDocumentMeta(
+    'UX & Design Learning Path',
+    'Bite-sized UX & design lessons with quizzes and shareable certificates.',
+  );
   const [query, setQuery] = useState('');
 
   const overall = useMemo(() => {
