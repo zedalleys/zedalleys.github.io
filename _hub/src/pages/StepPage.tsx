@@ -74,10 +74,16 @@ export function StepPage() {
         ))}
       </div>
 
+      {/*
+        Keyed by step id so navigating straight from one step to the next
+        (via "Complete step →" or the nav links) gives a fresh quiz —
+        otherwise the component keeps its position in the tree and carries
+        the previous step's answers and shuffled option order across.
+      */}
       {alreadyComplete && !practiceMode ? (
-        <QuizReview quiz={step.quiz} onRetake={() => setPracticeMode(true)} />
+        <QuizReview key={step.id} quiz={step.quiz} onRetake={() => setPracticeMode(true)} />
       ) : (
-        <QuizBlock quiz={step.quiz} onPass={handlePass} />
+        <QuizBlock key={step.id} quiz={step.quiz} onPass={handlePass} />
       )}
 
       {alreadyComplete && (
