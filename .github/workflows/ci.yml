@@ -71,3 +71,27 @@ jobs:
             --root-dir .
             './*.html'
             './journal/**/*.html'
+
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Build site (assets + Eleventy)
+        run: npm run build
+      # LHCI serves the built site itself (startServerCommand in
+      # lighthouserc.json) and audits a handful of representative pages.
+      # Thresholds are "warn" for now: the run reports scores and uploads
+      # full reports but doesn't fail the build. Flip the categories to
+      # "error" once a green baseline is confirmed, so perf/a11y/SEO
+      # regressions block a PR.
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: ./lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true

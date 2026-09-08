@@ -1,0 +1,28 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "npx --yes http-server . -p 8080 --silent",
+      "startServerReadyPattern": "Available on",
+      "startServerReadyTimeout": 30000,
+      "url": [
+        "http://127.0.0.1:8080/",
+        "http://127.0.0.1:8080/portfolio.html",
+        "http://127.0.0.1:8080/about.html",
+        "http://127.0.0.1:8080/blog.html",
+        "http://127.0.0.1:8080/journal/the-portfolio-you-dont-put-online/"
+      ],
+      "numberOfRuns": 3,
+      "settings": {
+        "preset": "desktop"
+      }
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["warn", { "minScore": 0.9, "aggregationMethod": "median-run" }],
+        "categories:accessibility": ["warn", { "minScore": 0.95, "aggregationMethod": "median-run" }],
+        "categories:best-practices": ["warn", { "minScore": 0.95, "aggregationMethod": "median-run" }],
+        "categories:seo": ["warn", { "minScore": 0.95, "aggregationMethod": "median-run" }]
+      }
+    }
+  }
+}
