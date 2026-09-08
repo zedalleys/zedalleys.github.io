@@ -34,4 +34,16 @@ export const categories: Category[] = [
     description: 'Designing the experience layer around models that are probabilistic, proactive, and sometimes wrong.',
     subjectIds: ['ux-for-ai'],
   },
+  {
+    id: 'product-and-business',
+    title: 'Product & Business',
+    description: 'Deciding what gets built and why, and turning a business need into requirements precise enough to build from.',
+    subjectIds: ['product-management', 'business-requirement-analysis'],
+  },
+  {
+    id: 'leadership-and-practice',
+    title: 'Leadership & Practice',
+    description: 'Leading a design team, auditing an existing product, and structuring how design work gets done at scale.',
+    subjectIds: ['ux-leadership', 'ux-team-models', 'ux-audit'],
+  },
 ];

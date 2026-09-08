@@ -1,12 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 /**
  * The Zed Alleys personal-site nav, reproduced with the same markup/classes
  * as src/_includes/partials/nav.njk (see ../App.css) so the Learning Hub
  * reads as a continuation of the same site rather than a sub-app with its
- * own chrome. "Learning Hub" is always the active link here — getting back
- * into a subject or step uses the in-page "← All subjects" / "← Back to
- * path" links, not this nav.
+ * own chrome. Cross-app items (`href`) are plain links to other static
+ * pages; in-hub items (`to`) are client-routed and set the active tab by
+ * the current path. "Learning Hub" covers every hub route except the ones
+ * that have their own tab (currently just Roadmaps) — getting back into a
+ * subject or step uses the in-page "← All subjects" / "← Back to path"
+ * links, not this nav.
  */
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
@@ -14,10 +18,12 @@ const NAV_LINKS = [
   { href: '/portfolio.html', label: 'Work' },
   { href: '/blog.html', label: 'Journal' },
   { href: '/contact.html', label: 'Contact' },
-  { href: '/learning-hub/', label: 'Learning Hub', active: true },
-];
+  { to: '/', label: 'Learning Hub' },
+  { to: '/roadmaps', label: 'Roadmaps' },
+] as const;
 
 export function NavBar() {
+  const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navToggleRef = useRef<HTMLButtonElement>(null);
@@ -82,17 +88,27 @@ export function NavBar() {
         <span className="brand-word">Alleys</span>
       </a>
       <div className="nav-links" id="navLinks" ref={navLinksRef}>
-        {NAV_LINKS.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            className={`nav-link${link.active ? ' is-active' : ''}`}
-            aria-current={link.active ? 'page' : undefined}
-            onClick={() => setMenuOpen(false)}
-          >
-            {link.label}
-          </a>
-        ))}
+        {NAV_LINKS.map((link) => {
+          if ('to' in link) {
+            const isActive = link.to === '/' ? location.pathname !== '/roadmaps' : location.pathname === link.to;
+            return (
+              <Link
+                key={link.label}
+                to={link.to}
+                className={`nav-link${isActive ? ' is-active' : ''}`}
+                aria-current={isActive ? 'page' : undefined}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            );
+          }
+          return (
+            <a key={link.label} href={link.href} className="nav-link" onClick={() => setMenuOpen(false)}>
+              {link.label}
+            </a>
+          );
+        })}
       </div>
       <button
         type="button"

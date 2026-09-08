@@ -1,6 +1,11 @@
 import type { Subject } from '../types';
 import { uxForAiSubject } from './subject-ux-for-ai';
 import { uxLawsSubject } from './subject-ux-laws';
+import { productManagementSubject } from './subject-product-management';
+import { uxAuditSubject } from './subject-ux-audit';
+import { uxLeadershipSubject } from './subject-ux-leadership';
+import { businessRequirementAnalysisSubject } from './subject-business-requirement-analysis';
+import { uxTeamModelsSubject } from './subject-ux-team-models';
 
 export const subjects: Subject[] = [
   {
@@ -3281,4 +3286,9 @@ export const subjects: Subject[] = [
   },
   uxForAiSubject,
   uxLawsSubject,
+  productManagementSubject,
+  uxAuditSubject,
+  uxLeadershipSubject,
+  businessRequirementAnalysisSubject,
+  uxTeamModelsSubject,
 ];
