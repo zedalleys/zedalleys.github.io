@@ -1,0 +1,70 @@
+---
+permalink: roadmaps.html
+navKey: roadmaps
+pageStyle: roadmaps
+title: Roadmaps · Zed Alleys
+description: Static reference maps of the product design discipline and the fields around it — how the topics fit together. A map, not a course.
+socialDescription: Static maps of the product design discipline — how the topics fit together.
+extraScripts: <script src="/scripts/roadmaps.js" defer></script>
+jsonld:
+  "@context": https://schema.org
+  "@type": CollectionPage
+  name: Roadmaps — Zed Alleys
+  description: Static reference maps of the product design discipline and adjacent fields.
+  url: https://zedalleys.com/roadmaps.html
+  isPartOf:
+    "@type": WebSite
+    name: Zed Alleys
+    url: https://zedalleys.com
+---
+<main class="roadmaps">
+
+<header class="roadmaps-hero">
+  <span class="eyebrow reveal">Reference</span>
+  <h1 class="display split-line"><em>Roadmaps.</em></h1>
+  <p class="lede reveal">Static maps of each discipline — how the topics fit together. A map, not a course: nothing here links out or unlocks a step.</p>
+</header>
+
+<div class="roadmaps-body">
+
+  <div class="roadmap-tabs" role="tablist" aria-label="Disciplines">
+    {%- for category in roadmaps %}
+    <button type="button" role="tab" id="tab-{{ category.id }}" aria-controls="panel-{{ category.id }}" aria-selected="{{ 'true' if loop.first else 'false' }}" class="roadmap-tab{% if loop.first %} is-active{% endif %}">{{ category.label }}</button>
+    {%- endfor %}
+  </div>
+
+  {%- for category in roadmaps %}
+  <section id="panel-{{ category.id }}" role="tabpanel" aria-labelledby="tab-{{ category.id }}" class="roadmap-panel"{% if not loop.first %} hidden{% endif %}>
+    {%- if category.sections %}
+    <div class="roadmap">
+      {%- for section in category.sections %}
+      <section class="roadmap-section">
+        <h2 class="roadmap-section__title">{{ section.title }}</h2>
+        <div class="roadmap-clusters">
+          {%- for cluster in section.clusters %}
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">{{ cluster.title }}</h3>
+            <ul class="roadmap-cluster__items">
+              {%- for item in cluster.items %}
+              <li>{{ item }}</li>
+              {%- endfor %}
+            </ul>
+          </div>
+          {%- endfor %}
+        </div>
+      </section>
+      {%- endfor %}
+    </div>
+    {%- else %}
+    <div class="roadmap-soon">
+      <p class="roadmap-soon__eyebrow">Coming soon</p>
+      <h2>{{ category.label }} roadmap</h2>
+      <p>This map hasn’t been written yet — check back later.</p>
+    </div>
+    {%- endif %}
+  </section>
+  {%- endfor %}
+
+</div>
+
+</main>

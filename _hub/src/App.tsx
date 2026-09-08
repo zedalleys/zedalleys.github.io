@@ -6,7 +6,6 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { Home } from './pages/Home';
 import { SubjectPathPage } from './pages/SubjectPathPage';
 import { StepPage } from './pages/StepPage';
-import { RoadmapPage } from './pages/RoadmapPage';
 import './App.css';
 
 // The certificate/verify routes pull in the Supabase client and the canvas
@@ -42,7 +41,6 @@ function App() {
           <Suspense fallback={null}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/roadmaps" element={<RoadmapPage />} />
               <Route path="/subjects/:subjectId" element={<SubjectPathPage />} />
               <Route path="/subjects/:subjectId/steps/:stepId" element={<StepPage />} />
               <Route path="/subjects/:subjectId/certificate" element={<CertificatePage />} />
