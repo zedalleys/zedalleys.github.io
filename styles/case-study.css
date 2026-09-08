@@ -37,6 +37,12 @@
 .case-hero-link {
   margin-top: 40px;
 }
+.case-hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 40px;
+}
 .case-hero .meta-item .label {
   color: var(--ink-dim);
   letter-spacing: 0.1em;
