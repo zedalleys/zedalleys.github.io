@@ -48,6 +48,12 @@ jobs:
       - name: Install Learning Hub deps
         run: npm ci
         working-directory: _hub
+      - name: Lint Learning Hub
+        run: npm run lint
+        working-directory: _hub
+      - name: Test Learning Hub
+        run: npm test
+        working-directory: _hub
       - name: Build Learning Hub (type-check + Vite)
         run: npm run build
         working-directory: _hub

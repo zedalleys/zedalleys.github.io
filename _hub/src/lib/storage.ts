@@ -75,3 +75,38 @@ export function resetSubjectProgress(subjectId: string): void {
   delete all[subjectId];
   writeAll(all);
 }
+
+export interface StepUnlockInfo {
+  /** Position of the step in the subject's flattened step list, or -1. */
+  index: number;
+  /** Does the step exist in this subject at all? */
+  exists: boolean;
+  isComplete: boolean;
+  /** True for the first step, or when the immediately preceding step is done. */
+  previousComplete: boolean;
+  /** Not yet completed and not yet reachable — steps unlock sequentially. */
+  isLocked: boolean;
+}
+
+/**
+ * The single source of truth for "can the visitor open this step yet?".
+ * Both `StepPage` (redirect guard) and `PathMap` (locked/complete styling)
+ * read from here so the sequential-unlock rule can't drift between them.
+ */
+export function getStepUnlockInfo(subject: Subject, stepId: string): StepUnlockInfo {
+  const steps = getAllSteps(subject);
+  const index = steps.findIndex((s) => s.id === stepId);
+  if (index === -1) {
+    return { index: -1, exists: false, isComplete: false, previousComplete: false, isLocked: true };
+  }
+  const completed = getSubjectProgress(subject.id).completedSteps;
+  const isComplete = completed.includes(stepId);
+  const previousComplete = index === 0 || completed.includes(steps[index - 1].id);
+  return {
+    index,
+    exists: true,
+    isComplete,
+    previousComplete,
+    isLocked: !isComplete && !previousComplete,
+  };
+}

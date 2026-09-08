@@ -1,11 +1,8 @@
 import { Link } from 'react-router-dom';
 import type { Subject } from '../types';
-import { getAllSteps, getSubjectProgress } from '../lib/storage';
+import { getStepUnlockInfo } from '../lib/storage';
 
 export function PathMap({ subject }: { subject: Subject }) {
-  const progress = getSubjectProgress(subject.id);
-  const flatSteps = getAllSteps(subject);
-
   return (
     <div className="path-map">
       {subject.levels.map((level) => (
@@ -13,11 +10,7 @@ export function PathMap({ subject }: { subject: Subject }) {
           <h2 className="path-map__level-title">{level.title}</h2>
           <div className="path-map__nodes">
             {level.steps.map((step) => {
-              const flatIndex = flatSteps.findIndex((s) => s.id === step.id);
-              const isComplete = progress.completedSteps.includes(step.id);
-              const isFirst = flatIndex === 0;
-              const previousComplete = isFirst || progress.completedSteps.includes(flatSteps[flatIndex - 1].id);
-              const isLocked = !isComplete && !previousComplete;
+              const { index: flatIndex, isComplete, isLocked } = getStepUnlockInfo(subject, step.id);
               const position = flatIndex % 3;
 
               const node = (
