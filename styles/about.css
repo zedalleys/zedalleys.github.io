@@ -44,6 +44,7 @@
   margin: 0 auto;
 }
 .about-intro .photo {
+  position: relative;
   height: 520px;
   border-radius: 4px;
   overflow: hidden;
@@ -54,6 +55,17 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+/* Fade the photo edges into the dark page instead of a hard rectangle. */
+.about-intro .photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 60px 14px rgba(10, 20, 22, 0.85),
+    inset 0 0 0 1px var(--line-strong);
 }
 .about-intro-content p {
   color: var(--ink-dim);
