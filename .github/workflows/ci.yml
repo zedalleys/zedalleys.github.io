@@ -74,13 +74,11 @@ jobs:
 
   lighthouse:
     runs-on: ubuntu-latest
-    # Advisory only. Thresholds in lighthouserc.json are "warn", and the
-    # GitHub artifact-upload step is prone to transient 403s — neither
-    # should ever block a merge. Read the scores in the job log / artifacts.
-    # Once a green baseline is confirmed, flip the lighthouserc.json
-    # categories to "error" AND drop this continue-on-error so real
-    # perf/a11y/SEO regressions block a PR.
-    continue-on-error: true
+    # Green baseline confirmed — categories in lighthouserc.json are "error",
+    # so a real perf/a11y/best-practices/SEO regression blocks the PR.
+    # temporaryPublicStorage is left off (it was the source of transient
+    # 403s); uploadArtifacts still attaches the LHCI report as a GitHub
+    # Actions artifact for debugging a failure.
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -97,4 +95,3 @@ jobs:
         with:
           configPath: ./lighthouserc.json
           uploadArtifacts: true
-          temporaryPublicStorage: true
