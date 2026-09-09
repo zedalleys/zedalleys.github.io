@@ -2,8 +2,11 @@
 
 ## v1 — done
 
-- [x] Subject → Level → Step content model, all editable from one file
-      (`src/data/subjects.ts`)
+- [x] Subject → Level → Step content model. Each subject's content lives in
+      its own `src/data/subject-*.ts` file; `src/data/subjects.ts` is now a
+      test-only aggregate that imports all of them, and page components use
+      `subjectsMeta` + a dynamic `loadSubject()` so opening one lesson
+      doesn't pull in every subject's ~450 lines of content.
 - [x] Per-subject progress bar (independent per subject, not one combined
       "journey" bar)
 - [x] Sequential step unlocking within a subject
@@ -13,12 +16,12 @@
       download → share to LinkedIn / X / Facebook
 - [x] Progress persisted locally (`localStorage`), survives refresh
 - [x] Placeholder theme fully driven by CSS tokens, ready to rebrand
-- [x] Ten subjects with real content, each with 10 steps (5 levels × 2
-      steps, 2 quiz questions per step): "UX Design Fundamentals", "Visual
-      Design Basics", "Interaction Design & Usability", "Accessibility
-      Basics", "Design Thinking", "Design Systems", "User Research",
-      "Gestalt Principles", "UX Laws", and "UX for AI" (the latter two added
-      later, in their own `subject-ux-laws.ts` / `subject-ux-for-ai.ts` files)
+- [x] Fifteen subjects with real content, each roughly 10 steps (≈5 levels
+      × 2 steps, ~2 quiz questions per step): UX Design Fundamentals, Visual
+      Design Basics, Interaction Design & Usability, Accessibility Basics,
+      Design Thinking, Design Systems, User Research, Gestalt Principles, UX
+      Laws, UX for AI, Product Management, UX Audit, UX Leadership, Business
+      Requirement Analysis, and UX Team Models.
 - [x] Learning Hub home page: hero, overall stats (steps/subjects/
       certificates), a "Continue learning" shortcut for in-progress
       subjects, a search box, and subjects grouped into categories
@@ -40,7 +43,16 @@
       `/roadmaps.html` (data + template + styles now live in the main
       Eleventy build), so it's a peer of Work / Journal / Learning Hub in
       the nav rather than a route nested under the hub. The hub nav links
-      out to it like any other site page.
+      out to it like any other site page. Product Design, Front-End and
+      Back-End maps are written; the rest render "coming soon". The data
+      (`src/_data/roadmaps.js`) is integrity-checked in CI by
+      `scripts/check-roadmaps.mjs` (`npm run check:data`).
+- [x] Hub bundle code-split: every route is lazy-loaded, and each subject's
+      content is its own chunk pulled in on demand.
+- [x] CI hardened: runs on Node 22, dev dependencies modernised (vitest 5,
+      jsdom 30, typescript 7, eslint 10, eleventy-plugin-rss 3, …), and the
+      Lighthouse job is a real gate — `lighthouserc.json` thresholds are
+      `error` for performance / accessibility / best-practices / SEO.
 
 ## Rebrand + integrate as the "Learning Hub" tab
 
@@ -54,10 +66,10 @@ with a generic theme first.
       accent (`#e76f51`), Fraunces display + JetBrains Mono labels. Dark-only
       (the old `prefers-color-scheme` light theme was dropped to match the
       site, which is dark-only).
-- [x] Per-subject accent colors in `src/data/subjects.ts` collapsed to the
-      one coral accent, so the strict single-accent editorial system holds.
-      (Revert those `color:` fields if per-subject wayfinding colors are
-      wanted back.)
+- [x] Per-subject accent colors (the `color:` field in each
+      `src/data/subject-*.ts`) collapsed to the one coral accent, so the
+      strict single-accent editorial system holds. (Restore per-file
+      `color:` values if per-subject wayfinding colors are wanted back.)
 - [x] Site chrome: fixed `NavBar` (`src/components/NavBar.tsx`) with the Zed
       mark + "Learning Hub" wordmark and a "Zed Alleys ↗" link back to the
       main site; `SiteFooter` (`src/components/SiteFooter.tsx`) echoing the
@@ -82,19 +94,20 @@ with a generic theme first.
 
 Roughly in the order they'd likely matter, but not committed to:
 
-- **More subjects.** Content-only work once the pattern is established —
-  candidate: Information Architecture as its own dedicated deep dive (it's
-  currently covered as one step inside UX Design Fundamentals). Next batch
-  is planned to be built from reference material the user will provide,
-  rather than written from scratch.
+- **More subjects.** Content-only work now that the per-file pattern is
+  established — candidate: Information Architecture as its own dedicated
+  deep dive (currently one step inside UX Design Fundamentals).
+- **Fill in the remaining roadmaps.** Product Management, Business Analysis
+  and Project Management on `/roadmaps.html` are still "coming soon" stubs
+  in `src/_data/roadmaps.js`.
 - **Harden certificate issuance.** The current registry lets anyone with the
   public anon key insert a row (see README caveat). Since accounts are off
   the table (below), the fix is to move issuance behind a Supabase Edge
   Function that can rate-limit and validate server-side instead of a direct
   client insert.
-- **Content authoring UX.** `subjects.ts` is fine for one person editing by
-  hand; if content volume grows a lot, a small JSON/YAML format or a simple
-  local admin form could replace hand-written TS.
+- **Content authoring UX.** Per-subject `.ts` files are fine for one person
+  editing by hand; if content volume grows a lot, a small JSON/YAML format
+  or a simple local admin form could replace hand-written TS.
 - **Analytics.** Plausible now runs on the hub (`script.hash.js`, same
   `zedalleys.com` property), so per-route pageviews and drop-off are
   visible. Still missing: custom events for *which* quiz questions get
