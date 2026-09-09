@@ -9,7 +9,8 @@
     "lint": "eslint scripts/*.js",
     "format": "prettier --write \"**/*.{css,js,mjs}\"",
     "format:check": "prettier --check \"**/*.{css,js,mjs}\"",
-    "validate": "html-validate \"*.html\" \"journal/**/*.html\""
+    "validate": "html-validate \"*.html\" \"journal/**/*.html\"",
+    "check:data": "node scripts/check-roadmaps.mjs"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",
