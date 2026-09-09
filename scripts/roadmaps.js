@@ -2,8 +2,8 @@
 //
 // Progressive enhancement: without JS every panel after the first is
 // hidden via the `hidden` attribute, so a no-JS visitor still gets the
-// Product Design map (the only one with content). With JS, the tabs swap
-// which panel is shown.
+// Product Design map (the first tab). With JS, the tabs swap which panel
+// is shown.
 (function () {
   const tablist = document.querySelector(".roadmap-tabs");
   if (!tablist) return;
