@@ -322,17 +322,484 @@
     </div>
   </section>
   <section id="panel-front-end" role="tabpanel" aria-labelledby="tab-front-end" class="roadmap-panel" hidden>
-    <div class="roadmap-soon">
-      <p class="roadmap-soon__eyebrow">Coming soon</p>
-      <h2>Front-End roadmap</h2>
-      <p>This map hasn’t been written yet — check back later.</p>
+    <div class="roadmap">
+      <section class="roadmap-section">
+        <h2 class="roadmap-section__title">Web Fundamentals</h2>
+        <div class="roadmap-clusters">
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">How the Web Works</h3>
+            <ul class="roadmap-cluster__items">
+              <li>How Does the Internet Work</li>
+              <li>What is HTTP</li>
+              <li>DNS and How It Works</li>
+              <li>What is Domain Name</li>
+              <li>What is Hosting</li>
+              <li>Browsers and How They Work</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Version Control</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Git</li>
+              <li>GitHub</li>
+              <li>GitLab</li>
+              <li>Version Control Systems</li>
+              <li>Repo Hosting Services</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Package Managers</h3>
+            <ul class="roadmap-cluster__items">
+              <li>npm</li>
+              <li>Yarn</li>
+              <li>pnpm</li>
+              <li>Bun</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="roadmap-section">
+        <h2 class="roadmap-section__title">HTML &amp; CSS</h2>
+        <div class="roadmap-clusters">
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">HTML</h3>
+            <ul class="roadmap-cluster__items">
+              <li>HTML Basics</li>
+              <li>Semantic HTML</li>
+              <li>Forms &amp; Validations</li>
+              <li>Accessibility</li>
+              <li>SEO Basics</li>
+              <li>Conventions &amp; Best Practices</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">CSS</h3>
+            <ul class="roadmap-cluster__items">
+              <li>CSS Basics</li>
+              <li>Layouts (Flexbox &amp; Grid)</li>
+              <li>Responsive Design</li>
+              <li>Modern CSS</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">CSS at Scale</h3>
+            <ul class="roadmap-cluster__items">
+              <li>CSS Architecture (BEM)</li>
+              <li>CSS Preprocessors (Sass)</li>
+              <li>CSS Frameworks (Tailwind)</li>
+              <li>Design Systems</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="roadmap-section">
+        <h2 class="roadmap-section__title">JavaScript &amp; TypeScript</h2>
+        <div class="roadmap-clusters">
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">JavaScript Fundamentals</h3>
+            <ul class="roadmap-cluster__items">
+              <li>JavaScript Basics</li>
+              <li>DOM Manipulation</li>
+              <li>Fetch API / AJAX</li>
+              <li>ES6+ Syntax</li>
+              <li>Events &amp; Event Bubbling</li>
+              <li>Hoisting &amp; Closures</li>
+              <li>Prototype &amp; this Keyword</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Web APIs &amp; Browser Features</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Web APIs</li>
+              <li>Web Components</li>
+              <li>Custom Elements</li>
+              <li>Shadow DOM</li>
+              <li>Service Workers</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">TypeScript</h3>
+            <ul class="roadmap-cluster__items">
+              <li>TypeScript</li>
+              <li>Type Checkers</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="roadmap-section">
+        <h2 class="roadmap-section__title">Frameworks &amp; Meta-Frameworks</h2>
+        <div class="roadmap-clusters">
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Pick a Framework</h3>
+            <ul class="roadmap-cluster__items">
+              <li>React</li>
+              <li>Vue</li>
+              <li>Angular</li>
+              <li>Svelte</li>
+              <li>Solid.js</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Meta-Frameworks</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Next.js</li>
+              <li>Nuxt.js</li>
+              <li>SvelteKit</li>
+              <li>Astro</li>
+              <li>SSR</li>
+              <li>SSG</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Routing &amp; Data</h3>
+            <ul class="roadmap-cluster__items">
+              <li>React Router</li>
+              <li>GraphQL</li>
+              <li>Apollo</li>
+              <li>TanStack</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Mobile &amp; Desktop</h3>
+            <ul class="roadmap-cluster__items">
+              <li>React Native</li>
+              <li>Flutter</li>
+              <li>Ionic</li>
+              <li>Electron</li>
+              <li>Tauri</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="roadmap-section">
+        <h2 class="roadmap-section__title">Build, Test &amp; Ship</h2>
+        <div class="roadmap-clusters">
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Build Tools</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Vite</li>
+              <li>Module Bundlers (Webpack, Rollup, Parcel)</li>
+              <li>esbuild</li>
+              <li>SWC</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Code Quality</h3>
+            <ul class="roadmap-cluster__items">
+              <li>ESLint</li>
+              <li>Prettier</li>
+              <li>Linters &amp; Formatters</li>
+              <li>Code Reviews</li>
+              <li>Refactoring</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Testing</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Jest</li>
+              <li>Vitest</li>
+              <li>Cypress</li>
+              <li>Playwright</li>
+              <li>Unit &amp; E2E Testing</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Deployment &amp; Hosting</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Netlify</li>
+              <li>Vercel</li>
+              <li>Cloudflare</li>
+              <li>GitHub Pages</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="roadmap-section">
+        <h2 class="roadmap-section__title">Security, Performance &amp; Practice</h2>
+        <div class="roadmap-clusters">
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Security</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Web Security</li>
+              <li>CORS</li>
+              <li>CSP</li>
+              <li>OWASP Top Risks</li>
+              <li>Auth Strategies</li>
+              <li>HTTPS</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Performance</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Web Performance</li>
+              <li>Cache Control</li>
+              <li>Lighthouse</li>
+              <li>PWAs</li>
+              <li>Service Workers</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Working with AI</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Prompting Techniques</li>
+              <li>AI-Assisted Coding</li>
+              <li>AI Coding Agents</li>
+              <li>Implementing AI Features</li>
+              <li>MCP</li>
+            </ul>
+          </div>
+        </div>
+      </section>
     </div>
   </section>
   <section id="panel-back-end" role="tabpanel" aria-labelledby="tab-back-end" class="roadmap-panel" hidden>
-    <div class="roadmap-soon">
-      <p class="roadmap-soon__eyebrow">Coming soon</p>
-      <h2>Back-End roadmap</h2>
-      <p>This map hasn’t been written yet — check back later.</p>
+    <div class="roadmap">
+      <section class="roadmap-section">
+        <h2 class="roadmap-section__title">Web Fundamentals</h2>
+        <div class="roadmap-clusters">
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">How the Web Works</h3>
+            <ul class="roadmap-cluster__items">
+              <li>How Does the Internet Work</li>
+              <li>What is HTTP</li>
+              <li>DNS and How It Works</li>
+              <li>What is Domain Name</li>
+              <li>What is Hosting</li>
+              <li>Browsers and How They Work</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Version Control</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Git</li>
+              <li>GitHub</li>
+              <li>GitLab</li>
+              <li>Version Control Systems</li>
+              <li>Repo Hosting Services</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Frontend Basics</h3>
+            <ul class="roadmap-cluster__items">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Frontend Basics</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="roadmap-section">
+        <h2 class="roadmap-section__title">Languages &amp; APIs</h2>
+        <div class="roadmap-clusters">
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Pick a Language</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Python</li>
+              <li>JavaScript (Node.js)</li>
+              <li>Java</li>
+              <li>Go</li>
+              <li>Rust</li>
+              <li>PHP</li>
+              <li>Ruby</li>
+              <li>C</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Learn About APIs</h3>
+            <ul class="roadmap-cluster__items">
+              <li>REST</li>
+              <li>JSON APIs</li>
+              <li>GraphQL</li>
+              <li>gRPC</li>
+              <li>SOAP</li>
+              <li>Open API Specs (Swagger)</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Web Servers</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Nginx</li>
+              <li>Apache</li>
+              <li>Caddy</li>
+              <li>MS IIS</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="roadmap-section">
+        <h2 class="roadmap-section__title">Databases</h2>
+        <div class="roadmap-clusters">
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Relational Databases</h3>
+            <ul class="roadmap-cluster__items">
+              <li>PostgreSQL</li>
+              <li>MySQL</li>
+              <li>MariaDB</li>
+              <li>MS SQL</li>
+              <li>Oracle</li>
+              <li>SQLite</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">NoSQL Databases</h3>
+            <ul class="roadmap-cluster__items">
+              <li>MongoDB</li>
+              <li>CouchDB</li>
+              <li>DynamoDB</li>
+              <li>Cassandra</li>
+              <li>Redis</li>
+              <li>Neo4j</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Database Fundamentals</h3>
+            <ul class="roadmap-cluster__items">
+              <li>ACID</li>
+              <li>Transactions</li>
+              <li>Normalization</li>
+              <li>Database Indexes</li>
+              <li>ORMs</li>
+              <li>Migrations</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Scaling Databases</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Sharding Strategies</li>
+              <li>Data Replication</li>
+              <li>CAP Theorem</li>
+              <li>N+1 Problem</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="roadmap-section">
+        <h2 class="roadmap-section__title">Caching &amp; Security</h2>
+        <div class="roadmap-clusters">
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Caching</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Redis</li>
+              <li>Memcached</li>
+              <li>HTTP Caching</li>
+              <li>Server-Side Caching</li>
+              <li>Client-Side Caching</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Security Fundamentals</h3>
+            <ul class="roadmap-cluster__items">
+              <li>HTTPS / SSL &amp; TLS</li>
+              <li>CORS</li>
+              <li>CSP</li>
+              <li>OWASP Top Risks</li>
+              <li>Server Security</li>
+              <li>Hashing (MD5, SHA, bcrypt, scrypt)</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Authentication</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Basic Authentication</li>
+              <li>OAuth</li>
+              <li>Cookie-Based Auth</li>
+              <li>JWT</li>
+              <li>Token Authentication</li>
+              <li>SAML</li>
+              <li>OpenID</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="roadmap-section">
+        <h2 class="roadmap-section__title">Architecture &amp; Operations</h2>
+        <div class="roadmap-clusters">
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Architectural Patterns</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Monolith</li>
+              <li>Microservices</li>
+              <li>SOA</li>
+              <li>Service Mesh</li>
+              <li>Serverless</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Message Brokers &amp; Real-Time</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Kafka</li>
+              <li>RabbitMQ</li>
+              <li>WebSockets</li>
+              <li>Server-Sent Events</li>
+              <li>Long &amp; Short Polling</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Building for Scale</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Twelve-Factor Apps</li>
+              <li>Graceful Degradation</li>
+              <li>Circuit Breaker</li>
+              <li>Backpressure</li>
+              <li>Load Shifting</li>
+              <li>Throttling</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Observability</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Monitoring</li>
+              <li>Instrumentation</li>
+              <li>Telemetry</li>
+              <li>Profiling Performance</li>
+              <li>Failure Modes</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="roadmap-section">
+        <h2 class="roadmap-section__title">Testing, Delivery &amp; AI</h2>
+        <div class="roadmap-clusters">
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Testing</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Unit Testing</li>
+              <li>Integration Testing</li>
+              <li>Functional Testing</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">CI/CD &amp; Code Quality</h3>
+            <ul class="roadmap-cluster__items">
+              <li>CI/CD Pipelines</li>
+              <li>Code Reviews</li>
+              <li>Refactoring</li>
+              <li>Documentation Generation</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Search Engines</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Elasticsearch</li>
+              <li>Solr</li>
+            </ul>
+          </div>
+          <div class="roadmap-cluster">
+            <h3 class="roadmap-cluster__title">Working with AI</h3>
+            <ul class="roadmap-cluster__items">
+              <li>Prompting Techniques</li>
+              <li>AI-Assisted Coding</li>
+              <li>AI Coding Agents</li>
+              <li>MCP</li>
+              <li>Embeddings &amp; Vectors</li>
+              <li>RAGs</li>
+              <li>Function Calling</li>
+              <li>Structured Outputs</li>
+            </ul>
+          </div>
+        </div>
+      </section>
     </div>
   </section>
   <section id="panel-product-management" role="tabpanel" aria-labelledby="tab-product-management" class="roadmap-panel" hidden>
