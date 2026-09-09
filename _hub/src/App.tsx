@@ -3,15 +3,17 @@ import { HashRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { NavBar } from './components/NavBar';
 import { SiteFooter } from './components/SiteFooter';
 import { ErrorBoundary } from './components/ErrorBoundary';
-import { Home } from './pages/Home';
-import { SubjectPathPage } from './pages/SubjectPathPage';
-import { StepPage } from './pages/StepPage';
 import './App.css';
 
-// The certificate/verify routes pull in the Supabase client and the canvas
-// certificate renderer — real weight that most visitors (just reading a
-// lesson) never need. Splitting them out of the main chunk keeps the
-// common path lighter.
+// Every route is its own chunk. All four page components pull in
+// `data/subjects.ts` (and its per-subject files) — several thousand lines
+// of lesson/quiz content — so keeping any of them in the main bundle would
+// load that content on every visit regardless of which page it's for.
+const Home = lazy(() => import('./pages/Home').then((m) => ({ default: m.Home })));
+const SubjectPathPage = lazy(() =>
+  import('./pages/SubjectPathPage').then((m) => ({ default: m.SubjectPathPage })),
+);
+const StepPage = lazy(() => import('./pages/StepPage').then((m) => ({ default: m.StepPage })));
 const CertificatePage = lazy(() =>
   import('./pages/CertificatePage').then((m) => ({ default: m.CertificatePage })),
 );
