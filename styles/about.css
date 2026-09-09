@@ -46,6 +46,14 @@
 .about-intro .photo {
   height: 520px;
   border-radius: 4px;
+  overflow: hidden;
+}
+.about-intro .photo picture,
+.about-intro .photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .about-intro-content p {
   color: var(--ink-dim);

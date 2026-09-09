@@ -14,7 +14,7 @@ jsonld:
   jobTitle: Product Designer
   description: Expert Product Designer, UX researcher and mentor based in Riyadh, Saudi Arabia.
   url: https://zedalleys.com/about.html
-  image: https://zedalleys.com/assets/og/default.png
+  image: https://zedalleys.com/assets/images/portrait.jpg
   sameAs:
     - https://www.linkedin.com/in/ziadfteha/
     - https://adplist.org/mentors/ziad-fteha
@@ -52,13 +52,8 @@ jsonld:
 
 <!-- INTRO -->
 <section class="about-intro">
-  <!-- TODO(zed): drop a real portrait in at /assets/images/portrait.jpg
-       (approx 900×1100, plus a .webp sibling) and replace the placeholder
-       div below with:
-       <img class="photo" src="/assets/images/portrait.jpg" width="900" height="1100"
-            alt="Ziad Fteha" loading="lazy" decoding="async"> -->
-  <div class="placeholder photo">
-    <div class="placeholder-label">Portrait — drop in</div>
+  <div class="photo reveal">
+    {% figure "portrait", "Ziad Fteha at his desk", 1600, 1067, "lazy", "(min-width: 900px) 520px, 100vw" %}
   </div>
   <div class="about-intro-content reveal">
     <p>I'm a Product Designer with a strong track record of delivering user‑focused digital experiences across diverse industries. I specialize in transforming complex challenges into intuitive, high‑impact solutions through attention to detail and a deep understanding of user needs.</p>
