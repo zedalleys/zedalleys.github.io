@@ -1,0 +1,744 @@
+import type { SubjectMeta } from '../types';
+
+// Generated from `subjects.ts` (see `_gen-meta.test.ts`, run once by hand) —
+// titles and step titles only, no lesson content or quizzes. This is what
+// `Home`, `SubjectPathPage`/`PathMap`, `SubjectCard`, and `CertificatePage` import,
+// so they never pull in every subject's full content just to list or link to it.
+// A step's full content loads on demand via `loadSubject()` (`subjectLoaders.ts`).
+export const subjectsMeta: SubjectMeta[] = [
+  {
+    id: 'ux-fundamentals',
+    title: 'UX Design Fundamentals',
+    description: 'Learn what UX design actually is, how the design process works, and how to understand the people you design for.',
+    icon: '🧭',
+    color: '#E76F51',
+    levels: [
+      {
+        id: 'foundations',
+        title: 'Foundations of UX',
+        steps: [
+          { id: 'what-is-ux', title: 'What Is UX Design?' },
+          { id: 'ux-process', title: 'The UX Design Process' },
+        ],
+      },
+      {
+        id: 'understanding-users',
+        title: 'Understanding Users',
+        steps: [
+          { id: 'user-research-basics', title: 'User Research Basics' },
+          { id: 'personas-empathy', title: 'Personas & Empathy Maps' },
+        ],
+      },
+      {
+        id: 'structuring-the-experience',
+        title: 'Structuring the Experience',
+        steps: [
+          { id: 'information-architecture', title: 'Information Architecture Basics' },
+          { id: 'user-flows-journey-maps', title: 'User Flows & Journey Maps' },
+        ],
+      },
+      {
+        id: 'from-idea-to-prototype',
+        title: 'From Idea to Prototype',
+        steps: [
+          { id: 'wireframes-prototype-fidelity', title: 'Wireframes & Prototype Fidelity' },
+          { id: 'usability-testing-fundamentals', title: 'Usability Testing Fundamentals' },
+        ],
+      },
+      {
+        id: 'closing-the-loop',
+        title: 'Closing the Loop',
+        steps: [
+          { id: 'synthesizing-research-findings', title: 'Synthesizing Research Findings' },
+          { id: 'iterating-measuring-success', title: 'Iterating & Measuring Success' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'visual-design-basics',
+    title: 'Visual Design Basics',
+    description: 'Build an eye for color, typography, hierarchy, and layout — the building blocks that make interfaces feel clear and intentional.',
+    icon: '🎨',
+    color: '#E76F51',
+    levels: [
+      {
+        id: 'design-principles',
+        title: 'Design Principles',
+        steps: [
+          { id: 'color-theory', title: 'Color Theory for Interfaces' },
+          { id: 'typography-essentials', title: 'Typography Essentials' },
+        ],
+      },
+      {
+        id: 'layout-hierarchy',
+        title: 'Layout & Hierarchy',
+        steps: [
+          { id: 'visual-hierarchy-gestalt', title: 'Visual Hierarchy & Gestalt Principles' },
+          { id: 'grids-spacing', title: 'Grids & Spacing Systems' },
+        ],
+      },
+      {
+        id: 'iconography-imagery',
+        title: 'Iconography & Imagery',
+        steps: [
+          { id: 'iconography-basics', title: 'Iconography Basics' },
+          { id: 'working-with-imagery', title: 'Working with Imagery' },
+        ],
+      },
+      {
+        id: 'motion-microinteractions',
+        title: 'Motion & Micro-interactions',
+        steps: [
+          { id: 'intro-to-motion-design', title: 'Introduction to Motion in Interfaces' },
+          { id: 'microinteractions', title: 'Micro-interactions' },
+        ],
+      },
+      {
+        id: 'layout-for-every-screen',
+        title: 'Layout for Every Screen',
+        steps: [
+          { id: 'responsive-design-basics', title: 'Responsive Design Basics' },
+          { id: 'dark-mode-theming', title: 'Dark Mode & Theming' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'interaction-design',
+    title: 'Interaction Design & Usability',
+    description: 'Learn how interfaces communicate what\'s clickable, how they respond to actions, and the heuristics experts use to judge usability.',
+    icon: '🖱️',
+    color: '#E76F51',
+    levels: [
+      {
+        id: 'core-interaction-principles',
+        title: 'Core Interaction Principles',
+        steps: [
+          { id: 'affordances-signifiers', title: 'Affordances & Signifiers' },
+          { id: 'feedback-system-status', title: 'Feedback & System Status' },
+        ],
+      },
+      {
+        id: 'usability-heuristics',
+        title: 'Usability Heuristics',
+        steps: [
+          { id: 'nielsen-heuristics-part-1', title: 'Nielsen\'s Usability Heuristics (Part 1)' },
+          { id: 'nielsen-heuristics-part-2', title: 'Nielsen\'s Usability Heuristics (Part 2)' },
+        ],
+      },
+      {
+        id: 'input-navigation-patterns',
+        title: 'Input & Navigation Patterns',
+        steps: [
+          { id: 'forms-and-input-design', title: 'Forms & Input Design' },
+          { id: 'navigation-patterns', title: 'Navigation Patterns' },
+        ],
+      },
+      {
+        id: 'errors-edge-cases',
+        title: 'Errors & Edge Cases',
+        steps: [
+          { id: 'error-messages-recovery', title: 'Error Messages & Recovery' },
+          { id: 'empty-states-edge-cases', title: 'Empty States & Edge Cases' },
+        ],
+      },
+      {
+        id: 'evaluating-interactions',
+        title: 'Evaluating Interactions',
+        steps: [
+          { id: 'heuristic-evaluation-vs-testing', title: 'Heuristic Evaluation vs. Usability Testing' },
+          { id: 'ab-testing-basics', title: 'A/B Testing Basics' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'accessibility-basics',
+    title: 'Accessibility Basics',
+    description: 'Design and build interfaces that work for people with a wide range of abilities — the principles, patterns, and pitfalls of accessible UX.',
+    icon: '♿',
+    color: '#E76F51',
+    levels: [
+      {
+        id: 'foundations-of-accessibility',
+        title: 'Foundations of Accessibility',
+        steps: [
+          { id: 'why-accessibility-matters', title: 'Why Accessibility Matters' },
+          { id: 'contrast-perceivable-content', title: 'Color Contrast & Perceivable Content' },
+        ],
+      },
+      {
+        id: 'building-accessible-interfaces',
+        title: 'Building Accessible Interfaces',
+        steps: [
+          { id: 'keyboard-navigation-focus', title: 'Keyboard Navigation & Focus' },
+          { id: 'semantic-html-screen-readers', title: 'Semantic HTML & Screen Readers' },
+        ],
+      },
+      {
+        id: 'assistive-technology-content',
+        title: 'Assistive Technology & Content',
+        steps: [
+          { id: 'how-screen-readers-work', title: 'How Screen Readers Work' },
+          { id: 'writing-accessible-content', title: 'Writing Accessible Content' },
+        ],
+      },
+      {
+        id: 'accessible-components-motion',
+        title: 'Accessible Components & Motion',
+        steps: [
+          { id: 'accessible-forms-in-depth', title: 'Accessible Forms in Depth' },
+          { id: 'motion-vestibular-safety', title: 'Motion & Vestibular Safety' },
+        ],
+      },
+      {
+        id: 'testing-and-the-business-case',
+        title: 'Testing & The Business Case',
+        steps: [
+          { id: 'accessibility-testing-tools', title: 'Accessibility Testing Tools & Methods' },
+          { id: 'legal-standards-business-case', title: 'Legal Standards & the Business Case' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'design-thinking',
+    title: 'Design Thinking',
+    description: 'The human-centered, iterative mindset behind creative problem-solving — from empathy through ideation to testing, and beyond screens.',
+    icon: '💡',
+    color: '#E76F51',
+    levels: [
+      {
+        id: 'the-design-thinking-mindset',
+        title: 'The Design Thinking Mindset',
+        steps: [
+          { id: 'what-is-design-thinking', title: 'What Is Design Thinking?' },
+          { id: 'empathize-building-understanding', title: 'Empathize: Building Genuine Understanding' },
+        ],
+      },
+      {
+        id: 'defining-the-right-problem',
+        title: 'Defining the Right Problem',
+        steps: [
+          { id: 'pov-statements', title: 'Problem Framing & Point-of-View Statements' },
+          { id: 'how-might-we-questions', title: 'How Might We Questions' },
+        ],
+      },
+      {
+        id: 'ideation-techniques',
+        title: 'Ideation Techniques',
+        steps: [
+          { id: 'brainstorming-rules', title: 'Brainstorming Rules & Divergent Thinking' },
+          { id: 'structured-ideation-methods', title: 'Structured Ideation Methods' },
+        ],
+      },
+      {
+        id: 'prototyping-and-testing-mindsets',
+        title: 'Prototyping & Testing Mindsets',
+        steps: [
+          { id: 'prototyping-to-think', title: 'Prototyping to Think, Not Just to Show' },
+          { id: 'testing-learning-loops', title: 'Testing & Learning Loops' },
+        ],
+      },
+      {
+        id: 'design-thinking-beyond-screens',
+        title: 'Design Thinking Beyond Screens',
+        steps: [
+          { id: 'applying-beyond-digital', title: 'Applying Design Thinking to Business & Service Problems' },
+          { id: 'pitfalls-and-criticisms', title: 'Common Pitfalls & Criticisms of Design Thinking' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'design-systems',
+    title: 'Design Systems',
+    description: 'What a design system actually is beyond a UI kit — tokens, component architecture, documentation, governance, and how one gets adopted.',
+    icon: '🧩',
+    color: '#E76F51',
+    levels: [
+      {
+        id: 'what-is-a-design-system',
+        title: 'What Is a Design System?',
+        steps: [
+          { id: 'beyond-a-ui-kit', title: 'Beyond a UI Kit' },
+          { id: 'the-business-case', title: 'The Business Case for Design Systems' },
+        ],
+      },
+      {
+        id: 'foundations-and-tokens',
+        title: 'Foundations & Tokens',
+        steps: [
+          { id: 'design-tokens-explained', title: 'Design Tokens Explained' },
+          { id: 'building-a-foundation', title: 'Building a Foundation' },
+        ],
+      },
+      {
+        id: 'component-architecture',
+        title: 'Component Architecture',
+        steps: [
+          { id: 'atomic-design-methodology', title: 'Atomic Design Methodology' },
+          { id: 'component-variants-states', title: 'Component Variants & States' },
+        ],
+      },
+      {
+        id: 'documentation-and-governance',
+        title: 'Documentation & Governance',
+        steps: [
+          { id: 'writing-component-documentation', title: 'Writing Usable Component Documentation' },
+          { id: 'governance-models', title: 'Governance Models' },
+        ],
+      },
+      {
+        id: 'adoption-and-evolution',
+        title: 'Adoption & Evolution',
+        steps: [
+          { id: 'rolling-out-a-design-system', title: 'Rolling Out a Design System' },
+          { id: 'measuring-and-evolving', title: 'Measuring & Evolving a Design System' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'user-research',
+    title: 'User Research',
+    description: 'Go deeper into planning studies, running interviews and surveys, avoiding bias, and building a real research practice.',
+    icon: '🔍',
+    color: '#E76F51',
+    levels: [
+      {
+        id: 'planning-research',
+        title: 'Planning Research',
+        steps: [
+          { id: 'choosing-the-right-method', title: 'Choosing the Right Method' },
+          { id: 'writing-a-research-plan', title: 'Writing a Research Plan' },
+        ],
+      },
+      {
+        id: 'talking-to-users',
+        title: 'Talking to Users',
+        steps: [
+          { id: 'conducting-effective-interviews', title: 'Conducting Effective Interviews' },
+          { id: 'surveys-and-questionnaires', title: 'Surveys & Questionnaires' },
+        ],
+      },
+      {
+        id: 'watching-users',
+        title: 'Watching Users',
+        steps: [
+          { id: 'writing-good-test-tasks', title: 'Writing Good Usability Test Tasks' },
+          { id: 'diary-studies-field-research', title: 'Diary Studies & Field Research' },
+        ],
+      },
+      {
+        id: 'making-sense-of-data',
+        title: 'Making Sense of Data',
+        steps: [
+          { id: 'avoiding-research-bias', title: 'Avoiding Research Bias' },
+          { id: 'reporting-findings-to-stakeholders', title: 'Reporting Findings to Stakeholders' },
+        ],
+      },
+      {
+        id: 'research-operations',
+        title: 'Research Operations',
+        steps: [
+          { id: 'building-a-research-practice', title: 'Building a Research Practice' },
+          { id: 'ethics-and-participant-care', title: 'Ethics & Participant Care' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'gestalt-principles',
+    title: 'Gestalt Principles',
+    description: 'A deep dive into the perceptual laws — proximity, similarity, closure, and more — that explain how people group and interpret what they see.',
+    icon: '🧠',
+    color: '#E76F51',
+    levels: [
+      {
+        id: 'foundational-grouping-laws',
+        title: 'Foundational Grouping Laws',
+        steps: [
+          { id: 'law-of-proximity', title: 'The Law of Proximity' },
+          { id: 'law-of-similarity', title: 'The Law of Similarity' },
+        ],
+      },
+      {
+        id: 'perceptual-completion',
+        title: 'Perceptual Completion',
+        steps: [
+          { id: 'law-of-closure', title: 'The Law of Closure' },
+          { id: 'law-of-continuity', title: 'The Law of Continuity' },
+        ],
+      },
+      {
+        id: 'depth-and-boundaries',
+        title: 'Depth & Boundaries',
+        steps: [
+          { id: 'figure-ground', title: 'Figure-Ground Relationship' },
+          { id: 'law-of-common-region', title: 'The Law of Common Region' },
+        ],
+      },
+      {
+        id: 'movement-and-simplicity',
+        title: 'Movement & Simplicity',
+        steps: [
+          { id: 'law-of-common-fate', title: 'The Law of Common Fate' },
+          { id: 'law-of-pragnanz', title: 'The Law of Prägnanz (Simplicity)' },
+        ],
+      },
+      {
+        id: 'applying-gestalt-to-interfaces',
+        title: 'Applying Gestalt to Interfaces',
+        steps: [
+          { id: 'gestalt-in-navigation-and-forms', title: 'Gestalt in Navigation & Forms' },
+          { id: 'common-gestalt-mistakes', title: 'Common Gestalt Mistakes to Avoid' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'ux-for-ai',
+    title: 'UX & UI for AI',
+    description: 'Designing the experience layer around AI — setting expectations, earning trust, handling a model that is confidently wrong, and running the workshops that decide what to build.',
+    icon: '🤖',
+    color: '#E76F51',
+    levels: [
+      {
+        id: 'why-ai-needs-ux',
+        title: 'Why AI Needs UX',
+        steps: [
+          { id: 'the-last-mile-problem', title: 'The Last-Mile Problem' },
+          { id: 'utility-usability-trust', title: 'Utility, Usability, and Trust' },
+        ],
+      },
+      {
+        id: 'designing-for-a-probabilistic-system',
+        title: 'Designing for a Probabilistic System',
+        steps: [
+          { id: 'setting-expectations', title: 'Setting Expectations' },
+          { id: 'designing-for-the-wrong-answer', title: 'Designing for the Wrong Answer' },
+        ],
+      },
+      {
+        id: 'proactivity-trust-and-the-creepy-line',
+        title: 'Proactivity, Trust & the Creepy Line',
+        steps: [
+          { id: 'the-weirdness-scale', title: 'The Weirdness Scale' },
+          { id: 'transparency-and-control', title: 'Transparency & Control' },
+        ],
+      },
+      {
+        id: 'research-for-ai-products',
+        title: 'Research for AI Products',
+        steps: [
+          { id: 'users-environments-tasks', title: 'Users, Environments, and Tasks' },
+          { id: 'garbage-in-garbage-out', title: 'Garbage In, Garbage Out' },
+        ],
+      },
+      {
+        id: 'the-design-thinking-workshop',
+        title: 'The Design-Thinking Workshop',
+        steps: [
+          { id: 'framing-the-problem', title: 'Framing the Problem' },
+          { id: 'prototyping-to-decide', title: 'Prototyping to Decide' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'ux-laws',
+    title: 'Laws of UX',
+    description: 'Ten laws from cognitive and behavioural psychology — Jakob, Fitts, Hick, Miller, Postel, Tesler, Peak-End, von Restorff, Doherty, aesthetic-usability — and how to design with each without misusing it.',
+    icon: '⚖️',
+    color: '#E76F51',
+    levels: [
+      {
+        id: 'familiarity-and-decisions',
+        title: 'Familiarity & Decisions',
+        steps: [
+          { id: 'jakobs-law', title: 'Jakob\'s Law' },
+          { id: 'hicks-law', title: 'Hick\'s Law' },
+        ],
+      },
+      {
+        id: 'movement-and-memory',
+        title: 'Movement & Memory',
+        steps: [
+          { id: 'fittss-law', title: 'Fitts\'s Law' },
+          { id: 'millers-law', title: 'Miller\'s Law' },
+        ],
+      },
+      {
+        id: 'complexity-and-robustness',
+        title: 'Complexity & Robustness',
+        steps: [
+          { id: 'teslers-law', title: 'Tesler\'s Law' },
+          { id: 'postels-law', title: 'Postel\'s Law' },
+        ],
+      },
+      {
+        id: 'emotion-and-attention',
+        title: 'Emotion & Attention',
+        steps: [
+          { id: 'peak-end-rule', title: 'Peak-End Rule' },
+          { id: 'von-restorff-effect', title: 'Von Restorff Effect' },
+        ],
+      },
+      {
+        id: 'speed-and-beauty',
+        title: 'Speed & Beauty',
+        steps: [
+          { id: 'doherty-threshold', title: 'Doherty Threshold' },
+          { id: 'aesthetic-usability-effect', title: 'Aesthetic-Usability Effect' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'product-management',
+    title: 'Product Management',
+    description: 'What gets built and why — vision and strategy, prioritization frameworks, writing a PRD, roadmapping, stakeholder alignment, and the metrics that tell you whether it worked.',
+    icon: '🚀',
+    color: '#E76F51',
+    levels: [
+      {
+        id: 'vision-and-strategy',
+        title: 'Vision & Strategy',
+        steps: [
+          { id: 'product-vision-and-strategy', title: 'Product Vision & Strategy' },
+          { id: 'product-market-fit', title: 'Product-Market Fit' },
+        ],
+      },
+      {
+        id: 'prioritization',
+        title: 'Prioritization',
+        steps: [
+          { id: 'okrs', title: 'OKRs' },
+          { id: 'rice-and-prioritization-frameworks', title: 'RICE & Prioritization Frameworks' },
+        ],
+      },
+      {
+        id: 'defining-the-product',
+        title: 'Defining the Product',
+        steps: [
+          { id: 'writing-a-prd', title: 'Writing a PRD' },
+          { id: 'mvp-scoping', title: 'MVP Scoping' },
+        ],
+      },
+      {
+        id: 'planning-and-alignment',
+        title: 'Planning & Alignment',
+        steps: [
+          { id: 'roadmapping', title: 'Roadmapping' },
+          { id: 'stakeholder-alignment', title: 'Stakeholder Alignment' },
+        ],
+      },
+      {
+        id: 'shipping-and-measuring',
+        title: 'Shipping & Measuring',
+        steps: [
+          { id: 'go-to-market-basics', title: 'Go-to-Market Basics' },
+          { id: 'product-metrics-and-north-star', title: 'Product Metrics & North Star' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'ux-audit',
+    title: 'UX Audit',
+    description: 'Systematically evaluating an existing product — heuristic evaluation, accessibility and competitive audits, severity ratings, and turning findings into a backlog stakeholders act on.',
+    icon: '🔍',
+    color: '#E76F51',
+    levels: [
+      {
+        id: 'why-audit',
+        title: 'Why Audit',
+        steps: [
+          { id: 'what-is-a-ux-audit', title: 'What Is a UX Audit?' },
+          { id: 'types-of-ux-audits', title: 'Types of UX Audits' },
+        ],
+      },
+      {
+        id: 'heuristic-evaluation',
+        title: 'Heuristic Evaluation',
+        steps: [
+          { id: 'nielsens-heuristics-in-audit-practice', title: 'Nielsen\'s Heuristics in Audit Practice' },
+          { id: 'severity-ratings', title: 'Severity Ratings' },
+        ],
+      },
+      {
+        id: 'beyond-heuristics',
+        title: 'Beyond Heuristics',
+        steps: [
+          { id: 'accessibility-audits', title: 'Accessibility Audits' },
+          { id: 'competitive-and-comparative-audits', title: 'Competitive & Comparative Audits' },
+        ],
+      },
+      {
+        id: 'running-the-audit',
+        title: 'Running the Audit',
+        steps: [
+          { id: 'audit-methodology', title: 'Audit Methodology' },
+          { id: 'writing-the-audit-report', title: 'Writing the Audit Report' },
+        ],
+      },
+      {
+        id: 'from-findings-to-action',
+        title: 'From Findings to Action',
+        steps: [
+          { id: 'presenting-findings-to-stakeholders', title: 'Presenting Findings to Stakeholders' },
+          { id: 'from-findings-to-a-prioritized-backlog', title: 'From Findings to a Prioritized Backlog' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'ux-leadership',
+    title: 'UX Leadership',
+    description: 'Moving from doing the design work to building the conditions for a team to do it well — vision, hiring, critique culture, influence without authority, and measuring design\'s impact.',
+    icon: '🧑‍💼',
+    color: '#E76F51',
+    levels: [
+      {
+        id: 'vision-and-culture',
+        title: 'Vision & Culture',
+        steps: [
+          { id: 'defining-a-design-vision', title: 'Defining a Design Vision' },
+          { id: 'design-culture-at-scale', title: 'Design Culture at Scale' },
+        ],
+      },
+      {
+        id: 'growing-people',
+        title: 'Growing People',
+        steps: [
+          { id: 'hiring-and-growing-designers', title: 'Hiring & Growing Designers' },
+          { id: 'career-ladders-and-leveling', title: 'Career Ladders & Leveling' },
+        ],
+      },
+      {
+        id: 'craft-and-feedback',
+        title: 'Craft & Feedback',
+        steps: [
+          { id: 'building-a-critique-culture', title: 'Building a Critique Culture' },
+          { id: 'managing-up', title: 'Managing Up' },
+        ],
+      },
+      {
+        id: 'influence-and-impact',
+        title: 'Influence & Impact',
+        steps: [
+          { id: 'influencing-without-authority', title: 'Influencing Without Authority' },
+          { id: 'measuring-and-communicating-designs-roi', title: 'Measuring and Communicating Design\'s ROI' },
+        ],
+      },
+      {
+        id: 'leading-through-change',
+        title: 'Leading Through Change',
+        steps: [
+          { id: 'leading-design-through-organizational-change', title: 'Leading Design Through Organizational Change' },
+          { id: 'building-psychological-safety-in-design-teams', title: 'Building Psychological Safety in Design Teams' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'business-requirement-analysis',
+    title: 'Business Requirement Analysis',
+    description: 'Turning a business need into requirements precise enough to build from — BRD vs PRD vs FRD, elicitation techniques, user stories, acceptance criteria, traceability, and change control.',
+    icon: '📋',
+    color: '#E76F51',
+    levels: [
+      {
+        id: 'requirements-basics',
+        title: 'Requirements Basics',
+        steps: [
+          { id: 'brd-vs-prd-vs-frd', title: 'BRD vs PRD vs FRD' },
+          { id: 'requirements-elicitation-techniques', title: 'Requirements Elicitation Techniques' },
+        ],
+      },
+      {
+        id: 'capturing-requirements',
+        title: 'Capturing Requirements',
+        steps: [
+          { id: 'user-stories-vs-formal-requirements', title: 'User Stories vs Formal Requirements' },
+          { id: 'acceptance-criteria', title: 'Acceptance Criteria' },
+        ],
+      },
+      {
+        id: 'prioritizing-and-tracing',
+        title: 'Prioritizing & Tracing',
+        steps: [
+          { id: 'moscow-prioritization', title: 'MoSCoW Prioritization' },
+          { id: 'requirements-traceability-matrix', title: 'Requirements Traceability Matrix' },
+        ],
+      },
+      {
+        id: 'managing-change',
+        title: 'Managing Change',
+        steps: [
+          { id: 'handling-changing-and-conflicting-requirements', title: 'Handling Changing & Conflicting Requirements' },
+          { id: 'sign-off-and-scope-control', title: 'Sign-off & Scope Control' },
+        ],
+      },
+      {
+        id: 'validation',
+        title: 'Validation',
+        steps: [
+          { id: 'stakeholder-workshops-and-interviews', title: 'Stakeholder Workshops & Interviews' },
+          { id: 'requirements-validation-and-review', title: 'Requirements Validation & Review' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'ux-team-models',
+    title: 'UX Team Models',
+    description: 'How design teams are structured relative to product and engineering — centralized vs embedded models, DesignOps, staffing ratios, maturity models, and scaling through growth.',
+    icon: '🧩',
+    color: '#E76F51',
+    levels: [
+      {
+        id: 'team-structures',
+        title: 'Team Structures',
+        steps: [
+          { id: 'centralized-vs-decentralized-models', title: 'Centralized vs Decentralized Models' },
+          { id: 'embedded-and-matrix-models', title: 'Embedded & Matrix Models' },
+        ],
+      },
+      {
+        id: 'design-operations',
+        title: 'Design Operations',
+        steps: [
+          { id: 'what-is-designops', title: 'What Is DesignOps?' },
+          { id: 'tooling-and-process-at-scale', title: 'Tooling & Process at Scale' },
+        ],
+      },
+      {
+        id: 'staffing',
+        title: 'Staffing',
+        steps: [
+          { id: 'designer-to-engineer-ratios', title: 'Designer-to-Engineer Ratios' },
+          { id: 'staffing-models-through-growth', title: 'Staffing Models Through Growth' },
+        ],
+      },
+      {
+        id: 'maturity',
+        title: 'Maturity',
+        steps: [
+          { id: 'design-maturity-models', title: 'Design Maturity Models' },
+          { id: 'measuring-team-health', title: 'Measuring Team Health' },
+        ],
+      },
+      {
+        id: 'scaling',
+        title: 'Scaling',
+        steps: [
+          { id: 'scaling-a-design-team', title: 'Scaling a Design Team' },
+          { id: 'cross-functional-squads', title: 'Cross-Functional Squads' },
+        ],
+      },
+    ],
+  },
+];

@@ -7,7 +7,7 @@ import type { Subject } from '../types';
  * measuring what design actually contributes. Cross-links into UX Team
  * Models for the structural side of the same problems.
  */
-export const uxLeadershipSubject: Subject = {
+export const subject: Subject = {
   id: 'ux-leadership',
   title: 'UX Leadership',
   description:

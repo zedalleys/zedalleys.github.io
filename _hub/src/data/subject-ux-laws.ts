@@ -7,7 +7,7 @@ import type { Subject } from '../types';
  * design application, and the caveat the book raises. Deliberately avoids the
  * Gestalt grouping laws, which have their own subject.
  */
-export const uxLawsSubject: Subject = {
+export const subject: Subject = {
   id: 'ux-laws',
   title: 'Laws of UX',
   description:

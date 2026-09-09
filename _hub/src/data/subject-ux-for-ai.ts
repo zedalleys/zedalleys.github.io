@@ -9,7 +9,7 @@ import type { Subject } from '../types';
  * Cross-links into the existing Design Thinking, User Research, Interaction
  * Design & Usability, and Visual Design Basics subjects.
  */
-export const uxForAiSubject: Subject = {
+export const subject: Subject = {
   id: 'ux-for-ai',
   title: 'UX & UI for AI',
   description:

@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { use, useState } from 'react';
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
-import { subjects } from '../data/subjects';
+import { loadSubject } from '../data/subjectLoaders';
 import { ProgressBar } from '../components/ProgressBar';
 import { QuizBlock } from '../components/QuizBlock';
 import { QuizReview } from '../components/QuizReview';
@@ -10,7 +10,15 @@ import { useDocumentMeta } from '../lib/useDocumentMeta';
 export function StepPage() {
   const { subjectId, stepId } = useParams();
   const navigate = useNavigate();
-  const subject = subjects.find((s) => s.id === subjectId);
+  // `use` is exempt from the rules-of-hooks ordering constraint (it can be
+  // called conditionally/interspersed), but it must still run before the
+  // regular hooks below on every render, same as the rest of this function.
+  // Suspends (via the route-level <Suspense> in App.tsx) until this specific
+  // subject's full content — the one with `step.content`/`quiz` — has
+  // loaded, instead of every subject's content shipping up front. An
+  // unknown subjectId resolves to `undefined` (see `loadSubject`), no
+  // network request made.
+  const subject = use(loadSubject(subjectId ?? ''));
   const [practiceMode, setPracticeMode] = useState(false);
 
   const flatSteps = subject ? getAllSteps(subject) : [];

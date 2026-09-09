@@ -1,5 +1,5 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
-import { subjects } from '../data/subjects';
+import { subjectsMeta as subjects } from '../data/subjectsMeta';
 import { PathMap } from '../components/PathMap';
 import { ProgressBar } from '../components/ProgressBar';
 import { getSubjectStats } from '../lib/storage';

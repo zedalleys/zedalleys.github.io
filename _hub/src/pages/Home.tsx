@@ -1,13 +1,13 @@
 import { useMemo, useState } from 'react';
-import { subjects } from '../data/subjects';
+import { subjectsMeta as subjects } from '../data/subjectsMeta';
 import { categories } from '../data/categories';
 import { SubjectCard } from '../components/SubjectCard';
 import { StatsSummary } from '../components/StatsSummary';
 import { getSubjectProgress, getSubjectStats } from '../lib/storage';
 import { useDocumentMeta } from '../lib/useDocumentMeta';
-import type { Subject } from '../types';
+import type { SubjectMeta } from '../types';
 
-function matchesQuery(subject: Subject, query: string): boolean {
+function matchesQuery(subject: SubjectMeta, query: string): boolean {
   const haystack = `${subject.title} ${subject.description}`.toLowerCase();
   return haystack.includes(query.toLowerCase());
 }

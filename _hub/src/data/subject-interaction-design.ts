@@ -1,0 +1,415 @@
+import type { Subject } from '../types';
+
+export const subject: Subject = {
+  id: 'interaction-design',
+  title: 'Interaction Design & Usability',
+  description: 'Learn how interfaces communicate what\'s clickable, how they respond to actions, and the heuristics experts use to judge usability.',
+  icon: '🖱️',
+  color: '#E76F51',
+  levels: [
+    {
+      id: 'core-interaction-principles',
+      title: 'Core Interaction Principles',
+      steps: [
+        {
+          id: 'affordances-signifiers',
+          title: 'Affordances & Signifiers',
+          summary: 'Why some things "look clickable" and others don\'t — and why that distinction matters.',
+          content: [
+            'An affordance is a property of an object that suggests how it can be used — a chair affords sitting, a door handle affords pulling. Don Norman applied this idea to interface design: a button affords pressing, a scrollbar affords dragging. The affordance is the actual possibility for action.',
+            'A signifier is different: it\'s a perceivable cue that tells you where that action is possible. A drop shadow under a button, an underline on a link, a slight color change on hover — these don\'t create the affordance, they communicate it. Norman later emphasized that in design, signifiers matter more day-to-day than affordances themselves, because a hidden affordance most people never discover is functionally useless.',
+            'This distinction explains a common failure mode in "flat design": stripping away shadows, borders, and other visual cues in the name of minimalism can leave a button looking identical to plain text. The affordance (it\'s still clickable) hasn\'t changed, but the signifier has vanished — so users simply never realize they can interact with it. Good interaction design keeps enough signifier even inside a minimal visual style.',
+            'A quick test for any interactive element: if you removed all context, would a first-time user still be able to guess it responds to a click or tap? If not, it needs a stronger signifier — not necessarily more decoration, just a clearer cue.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'What is the difference between an affordance and a signifier?',
+              options: [
+                'They are the same thing, just different names',
+                'An affordance is the actual possibility for an action; a signifier is the perceivable cue that communicates it',
+                'A signifier is a type of animation; an affordance is a type of color',
+                'Affordances only apply to physical objects, never to interfaces',
+              ],
+              correctIndex: 1,
+              explanation: 'The affordance is what\'s actually possible (a button can be pressed); the signifier is the visual cue (a shadow, underline, or color) that lets someone discover that possibility.',
+            },
+            {
+              id: 'q2',
+              question: 'Why can overly minimal "flat design" cause usability problems?',
+              options: [
+                'Because flat design is always slower to load',
+                'Because removing shadows, borders, and other cues can strip away signifiers, leaving clickable elements looking like plain text',
+                'Because flat design removes affordances entirely, making buttons non-functional',
+                'Because minimalism is only a problem on mobile devices',
+              ],
+              correctIndex: 1,
+              explanation: 'The element can still technically be clicked (the affordance remains), but without a signifier, users have no visual cue that it\'s interactive at all.',
+            },
+          ],
+        },
+        {
+          id: 'feedback-system-status',
+          title: 'Feedback & System Status',
+          summary: 'Why every action deserves a visible response, and how fast that response needs to be.',
+          content: [
+            'One of the most fundamental rules in interaction design is that the system should always keep users informed about what is happening, through appropriate feedback within a reasonable time. Without it, users are left guessing whether their tap registered, whether something is loading, or whether it\'s safe to try again.',
+            'Feedback takes many forms: a button visibly changing state when pressed, a spinner or progress bar during a wait, a toast notification confirming an action succeeded, or a red outline flagging an invalid form field. The specific form matters less than the fact that some response happens immediately.',
+            'Response time itself follows well-established guidelines, often traced to research popularized by Jakob Nielsen. Around 0.1 seconds feels instantaneous — no extra feedback is needed beyond the direct visual change. Around 1 second, users notice a delay but their flow of thought stays uninterrupted, though a subtle indicator helps. Beyond about 10 seconds, users lose focus on the task entirely — at that point, a progress indicator with a sense of completion (not just a generic spinner) becomes necessary, or users will assume something has failed.',
+            'The cost of skipping feedback isn\'t just annoyance — it\'s repeated actions (users clicking a submit button five times because nothing appeared to happen), lost trust, and users abandoning tasks they assume are broken.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'According to standard response-time guidelines, what generally needs to happen once a delay passes about 10 seconds?',
+              options: [
+                'Nothing — users will always wait patiently',
+                'The interface should show a progress indicator with a sense of completion, or users will assume it failed',
+                'The action should be cancelled automatically',
+                'The page should reload from scratch',
+              ],
+              correctIndex: 1,
+              explanation: 'Past roughly 10 seconds, users lose focus and start doubting the system is working — a meaningful progress indicator (not just a spinner) is needed to keep them engaged and confident.',
+            },
+            {
+              id: 'q2',
+              question: 'What commonly happens when an interface gives no feedback after a user taps a submit button?',
+              options: [
+                'Users instinctively know to wait exactly as long as needed',
+                'Users may tap the button multiple times, assuming the first attempt failed',
+                'The lack of feedback has no real effect on behavior',
+                'Users will always assume the action succeeded',
+              ],
+              correctIndex: 1,
+              explanation: 'Without visible confirmation, users often can\'t tell if their action registered, leading to repeated clicks/taps and, frequently, duplicate submissions.',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'usability-heuristics',
+      title: 'Usability Heuristics',
+      steps: [
+        {
+          id: 'nielsen-heuristics-part-1',
+          title: 'Nielsen\'s Usability Heuristics (Part 1)',
+          summary: 'The first five of Jakob Nielsen\'s ten general principles for interaction design.',
+          content: [
+            'In 1994, Jakob Nielsen published ten broad principles for usability, meant as general "rules of thumb" rather than strict guidelines — they\'re still one of the most widely used heuristic sets for evaluating interfaces today. The first five are:',
+            '1. Visibility of system status — the system should always keep users informed about what\'s going on, through appropriate feedback within reasonable time (this is the same principle covered in the previous step).',
+            '2. Match between system and the real world — the system should speak the user\'s language, with familiar words, phrases, and concepts, following real-world conventions rather than system-oriented terms. A trash-can icon for delete makes sense because it maps to a real-world concept; an icon of a "kill -9" command would not.',
+            '3. User control and freedom — users often choose functions by mistake and need a clearly marked "emergency exit" to leave an unwanted state without going through an extended process. This is why undo, cancel buttons, and back navigation matter so much.',
+            '4. Consistency and standards — users shouldn\'t have to wonder whether different words, situations, or actions mean the same thing. Following platform conventions (and staying internally consistent within your own product) reduces this cognitive load.',
+            '5. Error prevention — even better than good error messages is a careful design that prevents a problem from occurring in the first place, such as disabling a submit button until a form is valid, or confirming before a destructive action.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'Which heuristic is illustrated by using a trash-can icon (instead of a technical term) to represent "delete"?',
+              options: [
+                'Visibility of system status',
+                'Match between system and the real world',
+                'Error prevention',
+                'User control and freedom',
+              ],
+              correctIndex: 1,
+              explanation: 'This heuristic is about using familiar, real-world concepts and language rather than system- or implementation-oriented terms.',
+            },
+            {
+              id: 'q2',
+              question: 'Disabling a "Submit" button until a required field is filled in is a direct application of which heuristic?',
+              options: [
+                'Consistency and standards',
+                'Error prevention',
+                'User control and freedom',
+                'Match between system and the real world',
+              ],
+              correctIndex: 1,
+              explanation: 'Error prevention favors designs that stop a problem from happening at all, rather than only showing a good error message after the fact.',
+            },
+          ],
+        },
+        {
+          id: 'nielsen-heuristics-part-2',
+          title: 'Nielsen\'s Usability Heuristics (Part 2)',
+          summary: 'The remaining five of Nielsen\'s ten heuristics.',
+          content: [
+            'Continuing from the previous step, the last five of Nielsen\'s ten usability heuristics are:',
+            '6. Recognition rather than recall — minimize the user\'s memory load by making objects, actions, and options visible, rather than forcing them to remember information from one part of the interface to another. A visible list of recent items beats asking a user to recall and retype something.',
+            '7. Flexibility and efficiency of use — accelerators, invisible to novice users, can speed up interaction for experts (keyboard shortcuts, saved presets, batch actions), allowing a system to serve both infrequent and frequent users well.',
+            '8. Aesthetic and minimalist design — interfaces shouldn\'t contain information that is irrelevant or rarely needed; every extra unit of information competes with the relevant units and diminishes their visibility.',
+            '9. Help users recognize, diagnose, and recover from errors — error messages should be expressed in plain language (not codes), precisely indicate the problem, and constructively suggest a solution.',
+            '10. Help and documentation — even though it\'s best if a system can be used without documentation, it may be necessary to provide help; such information should be easy to search, focused on the user\'s task, and not overly large.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'Showing a dropdown of previously used values instead of requiring a user to retype something they entered earlier is an example of which heuristic?',
+              options: [
+                'Recognition rather than recall',
+                'Aesthetic and minimalist design',
+                'Help and documentation',
+                'Flexibility and efficiency of use',
+              ],
+              correctIndex: 0,
+              explanation: 'Making previously available information visible again — instead of relying on the user\'s memory — is the core idea behind "recognition rather than recall."',
+            },
+            {
+              id: 'q2',
+              question: 'What does the "aesthetic and minimalist design" heuristic actually argue for?',
+              options: [
+                'Interfaces should have zero visual styling',
+                'Every screen should contain as much information as possible',
+                'Irrelevant or rarely needed information should be avoided, since it competes with and dilutes relevant information',
+                'Only large enterprises need to worry about this heuristic',
+              ],
+              correctIndex: 2,
+              explanation: 'It\'s not about visual minimalism for its own sake — it\'s about avoiding low-value information that crowds out and reduces the visibility of what actually matters.',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'input-navigation-patterns',
+      title: 'Input & Navigation Patterns',
+      steps: [
+        {
+          id: 'forms-and-input-design',
+          title: 'Forms & Input Design',
+          summary: 'The small decisions in form design that determine whether people finish or abandon them.',
+          content: [
+            'Forms are one of the highest-friction moments in any product — every extra field is a small tax on the user\'s patience. The first, most effective lever is simply asking for less: every field should earn its place by being genuinely necessary right now, not "might be useful someday." Deferring optional information to later (after a core task is complete) is usually better than asking for it upfront.',
+            'Layout research consistently favors a single-column form over multi-column layouts for anything beyond very short forms — a single column keeps a clear, unambiguous reading and completion order, while multiple columns force the eye to jump around and increase the chance of a field being skipped by mistake.',
+            'Input types matter more on mobile than desktop: setting the correct input type (numeric, email, phone) determines which keyboard layout appears, saving users from hunting for the "@" symbol on a default keyboard. Autofill and appropriate autocomplete attributes further cut down the physical effort of typing.',
+            'Validation timing is its own design decision. Validating too early (flagging an email as invalid while the user is still mid-way through typing it) feels punishing and premature; validating only after a full-form submit means users discover every problem at once, in a wall of errors. A common effective pattern is validating a field once the user has finished with it (on blur), giving feedback close to when the mistake was made without interrupting active typing.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'Why do single-column form layouts generally outperform multi-column layouts for most forms?',
+              options: [
+                'Multi-column layouts are always technically impossible to build',
+                'A single column keeps a clear, unambiguous reading and completion order, reducing skipped fields',
+                'Single-column forms load faster',
+                'Multi-column layouts are only a problem on desktop, never on mobile',
+              ],
+              correctIndex: 1,
+              explanation: 'A single column avoids the eye needing to jump between columns, which keeps the intended order clear and reduces the chance a field gets missed.',
+            },
+            {
+              id: 'q2',
+              question: 'What is a common downside of validating a field the instant a user starts typing into it?',
+              options: [
+                'It has no downside and should always be done this way',
+                'It can feel premature and punishing, flagging an answer as wrong before the user has even finished typing it',
+                'It is technically impossible to implement',
+                'It only works for numeric fields',
+              ],
+              correctIndex: 1,
+              explanation: 'Validating too early interrupts the user mid-thought and flags incomplete input as if it were a final, wrong answer — validating on blur (after leaving the field) is a common middle ground.',
+            },
+          ],
+        },
+        {
+          id: 'navigation-patterns',
+          title: 'Navigation Patterns',
+          summary: 'Choosing between tab bars, hamburger menus, and other structures based on what they actually cost and offer.',
+          content: [
+            'Navigation patterns aren\'t interchangeable skins — each comes with real tradeoffs in discoverability and efficiency. A visible tab bar (persistent icons/labels for a handful of top-level destinations) keeps every major section one tap away and constantly visible, which is why it\'s the standard for the small number of primary destinations in a mobile app.',
+            'A hamburger menu (a hidden list of options behind a menu icon) trades that visibility for screen space: it can hold far more items, but every one of them becomes invisible until a user thinks to open it. Research has repeatedly found this pattern reduces engagement with the items it hides, compared to the same items being visible — hidden functionality effectively becomes undiscovered functionality for a meaningful share of users.',
+            'Breadcrumbs solve a different problem: showing a user their current location within a deep hierarchy (Home > Category > Subcategory > Item), and letting them jump back up multiple levels at once, which is especially valuable in content-heavy, hierarchical sites.',
+            'The right choice depends on how many top-level destinations exist and how often each is used: a small number of frequently-used destinations favors a persistent tab bar; a large number of secondary or rarely-used options is a more reasonable fit for a hidden menu, ideally alongside easier access to the highest-frequency items.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'What is a well-documented downside of hiding navigation items behind a hamburger menu?',
+              options: [
+                'Hamburger menus are technically impossible to implement on mobile',
+                'It tends to reduce engagement with the hidden items, since they\'re no longer visible as a reminder that they exist',
+                'It has no measurable effect on user behavior',
+                'It only affects desktop users, not mobile',
+              ],
+              correctIndex: 1,
+              explanation: 'Multiple studies on navigation patterns have found that hiding options behind a menu reduces how often users interact with them, compared to keeping those same options persistently visible.',
+            },
+            {
+              id: 'q2',
+              question: 'What specific problem do breadcrumbs solve?',
+              options: [
+                'They speed up page load times',
+                'They show a user\'s current location within a deep hierarchy and let them jump back up multiple levels at once',
+                'They replace the need for a search feature',
+                'They are primarily a decorative footer element',
+              ],
+              correctIndex: 1,
+              explanation: 'Breadcrumbs give users a clear sense of where they are within a nested structure and a fast way to navigate back up, which is especially useful in deep, hierarchical content.',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'errors-edge-cases',
+      title: 'Errors & Edge Cases',
+      steps: [
+        {
+          id: 'error-messages-recovery',
+          title: 'Error Messages & Recovery',
+          summary: 'A good error message names the problem, avoids blame, and offers a way out.',
+          content: [
+            'An error message has one real job beyond stating that something went wrong: helping the user recover. A message like "Error 4029" or "Something went wrong" tells a user that a problem exists but gives them nothing to act on. A stronger message names what happened in plain language and, wherever possible, suggests a concrete next step: "We couldn\'t save your changes because the file is too large. Try a file under 10MB."',
+            'Tone matters as much as content. Messages that imply user fault ("You entered an invalid value") read more harshly than framing the same information neutrally ("This field needs a value between 1 and 100"). Small wording choices like this shape whether a user feels supported or scolded at exactly the moment they\'re already frustrated.',
+            'Errors also need the right scope and placement. A field-level error (a typo in an email field) should appear right next to that field, not buried in a generic banner at the top of the page that forces the user to hunt for which field it actually refers to. A system-level error (the whole save operation failed) belongs in a more prominent, page-level location since no single field is responsible.',
+            'This connects directly back to error prevention, covered earlier in this subject\'s heuristics: the best error message is often the one that never needs to appear, because the interface stopped the mistake before it happened.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'What is the main problem with an error message like "Error 4029" shown with no further explanation?',
+              options: [
+                'It is too long for most screens',
+                'It confirms something went wrong but gives the user nothing actionable to do about it',
+                'It uses too much technical jargon that scares users away entirely',
+                'Numeric error codes are against accessibility guidelines',
+              ],
+              correctIndex: 1,
+              explanation: 'A message needs to explain what happened in plain language and, ideally, what to do next — a bare code leaves the user stuck without any path to recovery.',
+            },
+            {
+              id: 'q2',
+              question: 'Where should a field-level error (like an invalid email format) typically be shown?',
+              options: [
+                'In a single generic banner at the very top of the page',
+                'Directly next to the field it refers to',
+                'Only in the browser\'s console log',
+                'It should never be shown until the user tries to leave the page entirely',
+              ],
+              correctIndex: 1,
+              explanation: 'Placing the error next to its field keeps the connection between the message and the problem obvious, instead of forcing users to hunt for which field a generic banner is about.',
+            },
+          ],
+        },
+        {
+          id: 'empty-states-edge-cases',
+          title: 'Empty States & Edge Cases',
+          summary: 'The "unhappy paths" — no data, no connection, first use — that are easy to design around and skip.',
+          content: [
+            'Most design attention naturally goes to the "happy path" — the ideal case where everything works and there\'s plenty of content to show. But a huge share of real usage happens outside that ideal case: a brand-new user with zero data yet, a search with no results, a list after everything in it has been deleted, or a connection that just dropped.',
+            'A first-use empty state (before a user has any content) is a genuine design opportunity, not just a blank screen to tolerate — it can explain what the section is for and prompt the very first action that gets a new user started, which matters a lot for onboarding.',
+            'A "no results" empty state (after a search or filter that matched nothing) should distinguish itself clearly from a first-use empty state, and ideally suggest a next step — broadening a filter, checking spelling, or clearing search terms — rather than just repeating "no results found" with no path forward.',
+            'Offline and error states deserve the same deliberate design as any other screen: a generic broken-looking screen with no explanation reads as the product being broken, while a clear "you\'re offline — we\'ll retry automatically" message reads as an anticipated, handled situation. Designing these states late, or not at all, is one of the most common gaps between a polished demo and a product that holds up in the real world.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'Why is a first-use empty state considered a design opportunity rather than just a blank screen?',
+              options: [
+                'Because it should always be left completely blank for simplicity',
+                'Because it can explain the section\'s purpose and prompt the first action, which matters for onboarding new users',
+                'Because empty states are never seen by real users',
+                'Because it is required to be identical to the "no results" state',
+              ],
+              correctIndex: 1,
+              explanation: 'A thoughtfully designed first-use state helps orient brand-new users and nudge them toward their first meaningful action, rather than leaving them looking at nothing.',
+            },
+            {
+              id: 'q2',
+              question: 'What distinguishes a well-designed "no results" state from simply showing an unexplained blank/broken-looking screen?',
+              options: [
+                'Nothing, they should look identical',
+                'A well-designed "no results" state clearly explains the situation and suggests a next step, like adjusting a filter or search term',
+                'A "no results" state should never mention search or filters at all',
+                'It should always redirect the user to the homepage automatically',
+              ],
+              correctIndex: 1,
+              explanation: 'Clearly naming the situation and offering a next step (broaden the search, clear a filter) helps users recover, instead of leaving them to guess whether something is broken.',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'evaluating-interactions',
+      title: 'Evaluating Interactions',
+      steps: [
+        {
+          id: 'heuristic-evaluation-vs-testing',
+          title: 'Heuristic Evaluation vs. Usability Testing',
+          summary: 'Expert review and real-user testing catch different kinds of problems — which is why strong teams use both.',
+          content: [
+            'A heuristic evaluation is an expert review: one or more evaluators, familiar with established usability principles (such as Nielsen\'s ten heuristics from earlier in this subject), systematically inspect an interface and flag violations — a missing loading indicator, inconsistent button styles, no visible way to undo an action. It\'s fast, relatively cheap, and doesn\'t require recruiting any outside participants.',
+            'Usability testing, covered in the UX Fundamentals subject, instead observes real, representative users attempting real tasks. It reliably surfaces problems that heuristic evaluation can miss — confusion specific to a particular audience\'s vocabulary or mental model, a workflow that technically follows every heuristic but still doesn\'t match how actual users think about the task.',
+            'The two methods have a complementary blind spot: a heuristic evaluation is limited by the evaluator\'s own knowledge and assumptions, and can miss issues that only appear when someone unfamiliar with the product actually tries to use it. Usability testing, in turn, is limited by how many participants and tasks are practical to test, and can miss issues in areas nobody happened to interact with during a session.',
+            'A well-resourced process runs both, often in sequence: a heuristic evaluation early to catch known, well-understood problems cheaply, followed by usability testing to catch the unknown problems that only emerge from real behavior.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'What is a heuristic evaluation?',
+              options: [
+                'A test where real users attempt tasks while being observed',
+                'An expert review where evaluators inspect an interface against established usability principles',
+                'A method for measuring server load times',
+                'A type of A/B test',
+              ],
+              correctIndex: 1,
+              explanation: 'A heuristic evaluation relies on expert reviewers systematically checking an interface against known usability principles, without involving outside participants.',
+            },
+            {
+              id: 'q2',
+              question: 'Why do many teams use heuristic evaluation and usability testing together rather than choosing just one?',
+              options: [
+                'Because they always produce identical findings, so using both provides confirmation',
+                'Because each method has a different blind spot — heuristic evaluation is limited by evaluator knowledge, testing is limited by session/task coverage',
+                'Because usability testing is being phased out entirely',
+                'Because heuristic evaluation cannot be performed by more than one person',
+              ],
+              correctIndex: 1,
+              explanation: 'The two methods complement each other\'s weaknesses — expert review catches known issues cheaply, while real-user testing catches problems that only surface from actual behavior.',
+            },
+          ],
+        },
+        {
+          id: 'ab-testing-basics',
+          title: 'A/B Testing Basics',
+          summary: 'Comparing two versions with real traffic — and understanding exactly what that comparison can and can\'t tell you.',
+          content: [
+            'An A/B test shows two variants of a design — a control ("A") and a challenger ("B") — to different, randomly assigned segments of real traffic, then compares a target metric (click-through rate, conversion rate, time on task) between the two groups to see which performs better.',
+            'A result only means something if it reaches statistical significance — a measure of how likely the observed difference is to be real, rather than random noise from natural variation in behavior. A difference that "looks" bigger from a small sample can easily be pure chance; stopping a test too early, before enough data has accumulated, is one of the most common ways A/B testing gets misused.',
+            'A/B testing has a specific, narrow strength: it\'s very good at telling you which of two options performs better on a metric you can already measure at scale. It\'s not good at telling you why — a variant might win by accident, for an unrelated or even superficial reason, while some other underlying usability problem remains completely invisible in the numbers.',
+            'Because of that gap, A/B testing pairs naturally with qualitative methods rather than replacing them: quantitative results tell a team where a difference exists, and qualitative research (interviews, usability testing) explains why users responded the way they did — the same complementary relationship between quantitative and qualitative research covered back in the User Research basics.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'Why does stopping an A/B test too early pose a risk?',
+              options: [
+                'It saves money, so there is no real risk',
+                'A difference observed on too little data may just be random noise rather than a statistically significant, real effect',
+                'Early results are always more accurate than later ones',
+                'A/B tests are not affected by sample size at all',
+              ],
+              correctIndex: 1,
+              explanation: 'Without enough data to reach statistical significance, an apparent difference between variants could easily be random variation rather than a genuine effect.',
+            },
+            {
+              id: 'q2',
+              question: 'What is a key limitation of A/B testing on its own?',
+              options: [
+                'It cannot be run on real user traffic',
+                'It can show which variant performs better on a measured metric, but doesn\'t explain why users responded that way',
+                'It always requires a very small sample size',
+                'It can only be used for pricing pages',
+              ],
+              correctIndex: 1,
+              explanation: 'A/B testing is strong at measuring "which one wins" at scale, but explaining the underlying reasons requires pairing it with qualitative research.',
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};

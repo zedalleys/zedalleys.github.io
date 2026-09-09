@@ -1,0 +1,411 @@
+import type { Subject } from '../types';
+
+export const subject: Subject = {
+  id: 'ux-fundamentals',
+  title: 'UX Design Fundamentals',
+  description: 'Learn what UX design actually is, how the design process works, and how to understand the people you design for.',
+  icon: '🧭',
+  color: '#E76F51',
+  levels: [
+    {
+      id: 'foundations',
+      title: 'Foundations of UX',
+      steps: [
+        {
+          id: 'what-is-ux',
+          title: 'What Is UX Design?',
+          summary: 'The difference between UX and UI, and why UX starts before any screen exists.',
+          content: [
+            'User Experience (UX) design is the practice of shaping how a person feels when they interact with a product — whether that product is an app, a website, a physical device, or a service. It covers the entire journey: how easy something is to find, how clearly it communicates, how it responds to mistakes, and whether it leaves the user feeling capable or frustrated.',
+            'UX is often confused with UI (User Interface) design, but they are not the same thing. UI is the surface — the buttons, colors, typography, and layout the user actually sees and touches. UX is everything underneath that: the research that informs what to build, the structure of the information, the flow between screens, and the reasoning behind every decision. A beautiful interface built on a confusing flow is still bad UX.',
+            'Don Norman, who coined the term "user experience" in the 1990s while at Apple, described it as covering "all aspects of the end-user\'s interaction with the company, its services, and its products." That framing matters: UX is not a design step you do at the end, it is a lens you apply from the very first conversation about a problem.',
+            'A useful way to remember the distinction: UI is how it looks, UX is how it works — and how it makes someone feel while it\'s working.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'Which statement best describes the difference between UX and UI?',
+              options: [
+                'UX and UI are two names for the same discipline',
+                'UI is the visual surface of a product; UX is the entire experience of using it, including structure and flow',
+                'UX only applies to mobile apps, UI only applies to websites',
+                'UI comes before UX in the design process',
+              ],
+              correctIndex: 1,
+              explanation: 'UI is the visible surface (buttons, color, layout). UX encompasses the whole experience — research, structure, flow, and feeling — that the UI sits on top of.',
+            },
+            {
+              id: 'q2',
+              question: 'A product can have a beautiful, polished interface and still deliver bad UX. Why?',
+              options: [
+                'Because visual polish always guarantees good UX',
+                'Because UX is unrelated to how a product looks',
+                'Because the underlying flow, structure, or logic can still confuse or frustrate users regardless of visual polish',
+                'Because bad UX only happens in early prototypes',
+              ],
+              correctIndex: 2,
+              explanation: 'Visual polish lives at the UI layer. If the flow beneath it is confusing or the structure doesn\'t match how users think, the experience still fails — no matter how good it looks.',
+            },
+          ],
+        },
+        {
+          id: 'ux-process',
+          title: 'The UX Design Process',
+          summary: 'The Double Diamond model: how designers move from a vague problem to a validated solution.',
+          content: [
+            'Good UX rarely comes from jumping straight to a solution. Most professional teams follow some version of the "Double Diamond" — a model developed by the UK Design Council that has two phases of diverging and converging thinking.',
+            'The first diamond is about the problem. "Discover" means widening your view: talking to users, observing behavior, gathering data, without judging any of it yet. "Define" means narrowing back down — taking everything you learned and distilling it into a clear, specific problem statement.',
+            'The second diamond is about the solution. "Develop" means widening again: sketching many possible solutions, prototyping, exploring ideas that might seem unconventional. "Deliver" means narrowing down once more — testing those ideas with real users, refining the strongest one, and shipping it.',
+            'The reason this back-and-forth matters is that it protects teams from the most common UX failure: designing a polished answer to the wrong question. Diverging before converging, twice, forces the team to earn the right to build something before they build it.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'In the Double Diamond model, what happens during "Discover"?',
+              options: [
+                'The team narrows down to one final design',
+                'The team widens its understanding of the problem through research and observation',
+                'The team writes production code',
+                'The team picks colors and fonts',
+              ],
+              correctIndex: 1,
+              explanation: '"Discover" is a divergent phase — the goal is to gather as much context as possible before narrowing anything down.',
+            },
+            {
+              id: 'q2',
+              question: 'Why does the Double Diamond include two separate cycles of diverging and converging?',
+              options: [
+                'To make the process take longer for no reason',
+                'Because designers are required to sketch twice',
+                'To separate "finding the right problem" from "finding the right solution," so teams don\'t solve the wrong thing',
+                'Because the first diamond is for UI and the second is for UX',
+              ],
+              correctIndex: 2,
+              explanation: 'The first diamond defines the problem; the second explores and validates solutions. Splitting them prevents teams from solving a problem they never properly defined.',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'understanding-users',
+      title: 'Understanding Users',
+      steps: [
+        {
+          id: 'user-research-basics',
+          title: 'User Research Basics',
+          summary: 'Qualitative vs. quantitative research, and when to use each.',
+          content: [
+            'User research is how teams replace assumptions with evidence. It generally splits into two categories: qualitative and quantitative research.',
+            'Qualitative research answers "why." Methods like user interviews, contextual inquiries, and usability testing produce rich, detailed stories about behavior and motivation — but from a small number of people. You can\'t use qualitative research to say "73% of users prefer X," but you can use it to understand what confused someone and why.',
+            'Quantitative research answers "how many" or "how often." Methods like analytics, surveys, and A/B tests produce numbers from large sample sizes, but without the depth of explanation. You might learn that 40% of users drop off at checkout, but not why they left.',
+            'The strongest research practice combines both: quantitative data points you toward where a problem exists, and qualitative research tells you why it\'s happening. Relying on only one type is one of the most common mistakes new UX practitioners make.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'Which type of research is best suited to answering "why do users abandon this form"?',
+              options: [
+                'Quantitative research, because it uses large sample sizes',
+                'Qualitative research, because it captures reasoning and context behind behavior',
+                'Neither — this can only be answered by the engineering team',
+                'A/B testing alone',
+              ],
+              correctIndex: 1,
+              explanation: 'Qualitative methods like interviews or usability tests reveal the reasoning behind behavior, which pure numbers can\'t explain on their own.',
+            },
+            {
+              id: 'q2',
+              question: 'What is a key limitation of quantitative research on its own?',
+              options: [
+                'It never involves real users',
+                'It tells you where a problem exists but not why it\'s happening',
+                'It cannot be collected at scale',
+                'It always contradicts qualitative research',
+              ],
+              correctIndex: 1,
+              explanation: 'Quantitative data is great at surfacing patterns and scale, but it doesn\'t explain the underlying motivations — that\'s where qualitative research fills the gap.',
+            },
+          ],
+        },
+        {
+          id: 'personas-empathy',
+          title: 'Personas & Empathy Maps',
+          summary: 'Turning research into tools that keep a team designing for real people.',
+          content: [
+            'Once research is gathered, teams need a way to keep that understanding alive throughout a project — because it\'s easy for a team to slip back into designing for themselves rather than their users. Two common tools for this are personas and empathy maps.',
+            'A persona is a fictional, composite character built from research patterns — not a single real user, but a representative archetype. A good persona includes goals, frustrations, and context of use, not just demographics like age or job title. The demographic details matter far less than the behaviors and needs behind them.',
+            'An empathy map is a simpler, faster tool that organizes what\'s known about a user into quadrants: what they Say, Think, Do, and Feel. It\'s especially useful early in a project, or in workshops, to align a team\'s understanding before personas are fully built out.',
+            'Both tools share the same purpose: they are not deliverables to decorate a wall, they are decision-making aids. A well-used persona gets referenced in design reviews — "would Sarah actually understand this label?" — not just filed away after being created.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'What makes a persona useful, according to UX best practice?',
+              options: [
+                'It accurately represents one specific real user',
+                'It includes goals, frustrations, and context of use — not just demographics',
+                'It is created once and never referenced again',
+                'It focuses primarily on age and job title',
+              ],
+              correctIndex: 1,
+              explanation: 'Demographics alone rarely drive good design decisions. Goals, frustrations, and context are what actually help teams make user-centered choices.',
+            },
+            {
+              id: 'q2',
+              question: 'What are the four quadrants of a typical empathy map?',
+              options: [
+                'Discover, Define, Develop, Deliver',
+                'Say, Think, Do, Feel',
+                'Plan, Build, Test, Ship',
+                'Awareness, Consideration, Decision, Retention',
+              ],
+              correctIndex: 1,
+              explanation: 'Empathy maps organize research into what a user Says, Thinks, Does, and Feels, giving a fast, shared snapshot of their mindset.',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'structuring-the-experience',
+      title: 'Structuring the Experience',
+      steps: [
+        {
+          id: 'information-architecture',
+          title: 'Information Architecture Basics',
+          summary: 'How content and features get organized so people can actually find them.',
+          content: [
+            'Information architecture (IA) is the practice of organizing, structuring, and labeling content so that it supports findability and understanding. Before any screen is designed, IA answers a more basic question: given everything this product needs to contain, how should it be grouped, and what should it be called?',
+            'A few common organizational schemes recur across products: hierarchical (a tree of categories and subcategories, like a file system), sequential (a fixed step-by-step order, like a checkout flow), and matrix (letting users filter or sort content along multiple independent dimensions, like a product catalog filterable by price, size, and color). Most real products combine more than one scheme in different areas.',
+            'A widely used research method for validating an IA is card sorting: participants are given content items on individual cards and asked to group them in a way that makes sense to them (open card sort), or to sort them into categories the team has already proposed (closed card sort). The resulting patterns reveal whether the team\'s mental model of the content actually matches users\' mental models — a mismatch here causes navigation problems no amount of visual polish can fix.',
+            'Labeling deserves as much attention as structure. A perfectly organized hierarchy still fails if its category names use internal jargon instead of the words users actually search for or expect.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'What is the main purpose of a card-sorting exercise?',
+              options: [
+                'To decide what colors to use in the final interface',
+                'To reveal whether the team\'s proposed content grouping matches users\' own mental models',
+                'To test how fast users can complete a checkout flow',
+                'To measure server response times',
+              ],
+              correctIndex: 1,
+              explanation: 'Card sorting exposes gaps between how the team has organized content and how users naturally expect it to be grouped and labeled.',
+            },
+            {
+              id: 'q2',
+              question: 'A checkout flow that moves through a fixed series of steps in order is an example of which organizational scheme?',
+              options: [
+                'Matrix',
+                'Hierarchical',
+                'Sequential',
+                'Alphabetical',
+              ],
+              correctIndex: 2,
+              explanation: 'A sequential scheme organizes content or steps in a fixed, linear order — exactly how most checkout flows are structured.',
+            },
+          ],
+        },
+        {
+          id: 'user-flows-journey-maps',
+          title: 'User Flows & Journey Maps',
+          summary: 'Two related but distinct tools for visualizing how someone moves through a product.',
+          content: [
+            'A user flow is a diagram of the specific path a user takes through a product to complete one task — the screens, decisions, and actions involved in, say, resetting a password or completing a purchase. It\'s narrow and task-focused, usually drawn as a flowchart with decision points ("if payment fails, go here").',
+            'A journey map is broader. It plots a user\'s experience over an extended arc — sometimes an entire relationship with a company, not just one app session — including stages before and after actually using the product (discovering a need, researching options, onboarding, ongoing use, eventual churn or renewal). Crucially, journey maps typically track emotional state alongside actions: where does the user feel confident, where do they feel friction or anxiety?',
+            'The two tools answer different questions. A user flow helps a team design or debug one specific interaction. A journey map helps a team see the bigger picture — including moments entirely outside the product itself, like a confusing pricing page found via a search engine, or a support call that happens after checkout.',
+            'A practical reason to build both: a user flow can look perfectly efficient in isolation (few steps, no errors) while a journey map reveals that users arrive already frustrated from an earlier stage, which changes what "success" for that flow should even mean.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'What distinguishes a journey map from a user flow?',
+              options: [
+                'A journey map only covers technical error states',
+                'A journey map spans a broader arc of the user\'s experience, often including stages before and after using the product, and tracks emotional state',
+                'They are two names for the exact same artifact',
+                'A user flow is used only for mobile apps',
+              ],
+              correctIndex: 1,
+              explanation: 'User flows are narrow and task-specific; journey maps are broader, spanning more of the user\'s relationship with a product and typically capturing emotion alongside actions.',
+            },
+            {
+              id: 'q2',
+              question: 'Why might a journey map reveal a problem that a user flow diagram would miss?',
+              options: [
+                'Journey maps are always more visually appealing',
+                'A user flow can look efficient in isolation while missing that users arrive already frustrated from an earlier, out-of-product stage',
+                'User flows cannot include decision points',
+                'Journey maps replace the need for any research',
+              ],
+              correctIndex: 1,
+              explanation: 'Because journey maps include context outside the immediate task, they can surface friction (like confusion from an earlier stage) that a narrowly-scoped user flow would never capture.',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'from-idea-to-prototype',
+      title: 'From Idea to Prototype',
+      steps: [
+        {
+          id: 'wireframes-prototype-fidelity',
+          title: 'Wireframes & Prototype Fidelity',
+          summary: 'Choosing how polished a design should look before testing it.',
+          content: [
+            'Fidelity describes how closely a design artifact resembles the finished product. Low-fidelity wireframes use boxes, rough shapes, and placeholder text to represent structure and layout without any real visual design — the point is to work fast and keep feedback focused on layout and flow rather than color choices. High-fidelity mockups look like the real, finished interface: real copy, real typography, real spacing.',
+            'Fidelity applies to interaction as much as visuals. A static image is the lowest interactive fidelity — it shows what a screen looks like but nothing responds to a click. A clickable prototype, even built from low-fidelity wireframes, lets someone tap through a flow and experience sequence and feedback, which is often more valuable for early testing than beautiful static screens.',
+            'Choosing fidelity is a tradeoff, not a quality ladder where higher is always better. Low fidelity is fast to produce and change, and — importantly — makes reviewers more comfortable giving structural feedback ("should this be a separate screen?") instead of only cosmetic feedback ("I don\'t like that blue"), because a rough sketch doesn\'t look "finished" enough to feel precious.',
+            'A common mistake is jumping to high fidelity too early: polishing visuals before the underlying flow and structure have been validated means any structural change discovered later is far more expensive to make.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'Why might a team deliberately choose to test a low-fidelity wireframe instead of a polished mockup?',
+              options: [
+                'Low fidelity always produces more accurate results',
+                'It\'s faster to produce and tends to keep feedback focused on structure and flow rather than cosmetics',
+                'Low-fidelity wireframes are required by law for user testing',
+                'High-fidelity designs cannot be tested at all',
+              ],
+              correctIndex: 1,
+              explanation: 'Rough, clearly unfinished-looking wireframes invite structural feedback and are cheap to iterate on, which is often exactly what\'s needed early in a project.',
+            },
+            {
+              id: 'q2',
+              question: 'What is the risk of jumping straight to a high-fidelity, fully polished design before validating the flow?',
+              options: [
+                'There is no risk, higher fidelity is always better',
+                'Any structural problems discovered later become far more expensive to fix, since visual polish must be redone too',
+                'High-fidelity designs cannot include real copy',
+                'It makes the design impossible to prototype',
+              ],
+              correctIndex: 1,
+              explanation: 'Investing in visual polish before the underlying structure is validated means structural changes discovered later cost much more to make.',
+            },
+          ],
+        },
+        {
+          id: 'usability-testing-fundamentals',
+          title: 'Usability Testing Fundamentals',
+          summary: 'Watching real people attempt real tasks — and why a handful of testers goes a long way.',
+          content: [
+            'A usability test asks a small number of representative users to attempt real tasks with a design — a prototype or a live product — while a researcher observes where they succeed, struggle, or get confused. It\'s one of the most direct ways to find out whether a design actually works, as opposed to whether the team believes it works.',
+            'A common technique is the think-aloud protocol: participants are asked to verbalize their thoughts as they work through a task ("I\'m looking for a way to change my email... I don\'t see it here, let me check settings"). This surfaces reasoning and confusion that would be invisible from simply watching where someone clicks.',
+            'Tests can be moderated (a researcher guides the session live, asking follow-up questions in real time) or unmoderated (a participant completes tasks independently, often remotely, with the session recorded for later review). Moderated tests allow deeper follow-up; unmoderated tests scale faster and cheaper.',
+            'A frequently cited finding from Jakob Nielsen\'s research is that testing with about five users uncovers roughly 85% of usability problems in a single round — beyond that, additional users increasingly surface issues already found. The practical implication isn\'t "five is a magic number to hit exactly," it\'s that several small rounds of testing, with fixes in between, tend to find more problems than one large round.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'What does the "think-aloud" protocol ask participants to do during a usability test?',
+              options: [
+                'Fill out a written survey after the session',
+                'Verbalize their thoughts and reasoning while attempting the task',
+                'Stay completely silent so as not to bias the researcher',
+                'Only interact with the prototype using voice commands',
+              ],
+              correctIndex: 1,
+              explanation: 'Thinking aloud surfaces the reasoning and confusion behind a user\'s actions, which pure observation of clicks alone would miss.',
+            },
+            {
+              id: 'q2',
+              question: 'What is the practical takeaway from research suggesting ~5 users uncover most usability problems in a round of testing?',
+              options: [
+                'Testing with more than 5 users is always a waste of time',
+                'Several smaller rounds of testing with fixes in between tend to find more problems overall than one large round',
+                'Usability testing should never involve more than one participant',
+                'Five users is a legal requirement for usability testing',
+              ],
+              correctIndex: 1,
+              explanation: 'Since a small round already catches most issues, iterating across multiple small rounds — fixing issues between each — tends to be more effective than one large study.',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'closing-the-loop',
+      title: 'Closing the Loop',
+      steps: [
+        {
+          id: 'synthesizing-research-findings',
+          title: 'Synthesizing Research Findings',
+          summary: 'Turning a pile of raw notes and observations into insights a team can act on.',
+          content: [
+            'Research produces raw material — interview notes, session recordings, survey responses — but raw material isn\'t the same as an insight. Synthesis is the process of finding patterns across that material and turning them into something specific enough to inform a design decision.',
+            'A widely used technique is affinity mapping: individual observations are written on separate notes (physical sticky notes or a digital equivalent), then grouped by theme through discussion rather than a predetermined category scheme. Themes that emerge organically from the data tend to be more trustworthy than ones the team assumed going in.',
+            'A common trap is over-weighting one especially vivid or vocal data point — a single user who complained loudly about something sticks in memory far more than five users who quietly struggled with a different, more common issue. Good synthesis looks for patterns across multiple sources, and explicitly notes how many people experienced each issue, rather than treating every quote as equally significant.',
+            'The output of synthesis should be specific enough to act on. "Users found the flow confusing" isn\'t an actionable insight; "4 of 6 participants missed the save button because it appeared below the fold on smaller screens" is.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'Why is affinity mapping typically done by letting themes emerge from grouping, rather than sorting notes into categories decided in advance?',
+              options: [
+                'It\'s purely a matter of visual preference',
+                'Categories decided in advance risk imposing the team\'s existing assumptions instead of surfacing what the data actually shows',
+                'Predetermined categories are always more accurate',
+                'Affinity mapping cannot be done digitally',
+              ],
+              correctIndex: 1,
+              explanation: 'Letting themes emerge from the actual data reduces the risk of confirmation bias compared to force-fitting observations into categories chosen beforehand.',
+            },
+            {
+              id: 'q2',
+              question: 'Why is "users found the flow confusing" a weak research insight?',
+              options: [
+                'Because it uses the word "confusing," which is against best practice',
+                'It isn\'t specific enough to point to a concrete design decision — an actionable insight identifies what, where, and roughly how many people were affected',
+                'Because it is too short to be written down',
+                'Because usability testing cannot detect confusion',
+              ],
+              correctIndex: 1,
+              explanation: 'A specific, actionable insight names the exact problem, where it occurred, and its prevalence — vague summaries don\'t give a team enough to act on.',
+            },
+          ],
+        },
+        {
+          id: 'iterating-measuring-success',
+          title: 'Iterating & Measuring Success',
+          summary: 'UX work doesn\'t stop at launch — it loops back into discovery.',
+          content: [
+            'Shipping a design isn\'t the end of the UX process, it\'s a checkpoint. The Double Diamond model covered earlier isn\'t a one-time journey — teams cycle through discover-define-develop-deliver repeatedly, with each release generating new signals that feed the next round of discovery.',
+            'Measuring success after launch usually blends quantitative and qualitative signals, echoing the research methods covered earlier in this path. Common quantitative measures include task success rate (did users complete the intended action), time on task, and error rate. A structured survey like the System Usability Scale (SUS) — a standardized 10-question questionnaire — gives a comparable usability score across releases or competing designs.',
+            'Qualitative signals still matter after launch: support tickets, app store reviews, and follow-up interviews often explain the "why" behind a quantitative dip that analytics alone can\'t.',
+            'The core habit this step is meant to build: treat every release as a hypothesis, not a finished answer. A launched feature that doesn\'t meet its goal isn\'t a failure of the process — failing to measure it, or failing to feed what was learned back into the next round of discovery, is.',
+          ],
+          quiz: [
+            {
+              id: 'q1',
+              question: 'What is the System Usability Scale (SUS)?',
+              options: [
+                'A programming framework for building interfaces',
+                'A standardized 10-question questionnaire that produces a comparable usability score',
+                'A type of wireframing tool',
+                'A method for conducting card sorts',
+              ],
+              correctIndex: 1,
+              explanation: 'SUS is a widely used, standardized questionnaire that yields a single comparable score, useful for tracking usability across releases or against competitors.',
+            },
+            {
+              id: 'q2',
+              question: 'According to this step, what should happen after a launched feature fails to meet its goal?',
+              options: [
+                'The feature should always be removed immediately',
+                'Nothing — post-launch performance isn\'t worth tracking',
+                'The findings should feed back into the next round of discovery, treating the release as a hypothesis rather than a final answer',
+                'The team should stop measuring anything going forward',
+              ],
+              correctIndex: 2,
+              explanation: 'The Double Diamond process is cyclical — post-launch learning is meant to feed the next discovery phase, not be treated as a dead end.',
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};

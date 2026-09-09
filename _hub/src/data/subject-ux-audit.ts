@@ -7,7 +7,7 @@ import type { Subject } from '../types';
  * Nielsen heuristics introduced in Interaction Design & Usability and the
  * standards covered in Accessibility Basics.
  */
-export const uxAuditSubject: Subject = {
+export const subject: Subject = {
   id: 'ux-audit',
   title: 'UX Audit',
   description:

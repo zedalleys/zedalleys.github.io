@@ -8,7 +8,7 @@ import type { Subject } from '../types';
  * whether any of it worked. Cross-links into Business Requirement Analysis
  * and UX Team Models.
  */
-export const productManagementSubject: Subject = {
+export const subject: Subject = {
   id: 'product-management',
   title: 'Product Management',
   description:

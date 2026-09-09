@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import type { Subject } from '../types';
+import type { SubjectMeta } from '../types';
 import { getSubjectStats } from '../lib/storage';
 import { ProgressBar } from './ProgressBar';
 
-export function SubjectCard({ subject }: { subject: Subject }) {
+export function SubjectCard({ subject }: { subject: SubjectMeta }) {
   const stats = getSubjectStats(subject);
 
   return (

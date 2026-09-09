@@ -7,7 +7,7 @@ import type { Subject } from '../types';
  * formal requirements, prioritization, traceability, and change control.
  * Cross-links into Product Management's PRD step and UX Fundamentals.
  */
-export const businessRequirementAnalysisSubject: Subject = {
+export const subject: Subject = {
   id: 'business-requirement-analysis',
   title: 'Business Requirement Analysis',
   description:

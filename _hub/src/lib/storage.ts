@@ -1,4 +1,4 @@
-import type { ProgressState, SubjectProgress, Subject } from '../types';
+import type { ProgressState, SubjectProgress, SubjectLike } from '../types';
 
 const STORAGE_KEY = 'ux-learning-progress';
 
@@ -56,11 +56,11 @@ export function saveCertificateId(subjectId: string, certificateId: string): voi
   writeAll(all);
 }
 
-export function getAllSteps(subject: Subject) {
+export function getAllSteps<TStep extends { id: string }>(subject: SubjectLike<TStep>): TStep[] {
   return subject.levels.flatMap((level) => level.steps);
 }
 
-export function getSubjectStats(subject: Subject) {
+export function getSubjectStats(subject: SubjectLike) {
   const steps = getAllSteps(subject);
   const progress = getSubjectProgress(subject.id);
   const completed = steps.filter((s) => progress.completedSteps.includes(s.id)).length;
@@ -93,7 +93,7 @@ export interface StepUnlockInfo {
  * Both `StepPage` (redirect guard) and `PathMap` (locked/complete styling)
  * read from here so the sequential-unlock rule can't drift between them.
  */
-export function getStepUnlockInfo(subject: Subject, stepId: string): StepUnlockInfo {
+export function getStepUnlockInfo(subject: SubjectLike, stepId: string): StepUnlockInfo {
   const steps = getAllSteps(subject);
   const index = steps.findIndex((s) => s.id === stepId);
   if (index === -1) {

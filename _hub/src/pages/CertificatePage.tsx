@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
-import { subjects } from '../data/subjects';
+import { subjectsMeta as subjects } from '../data/subjectsMeta';
 import { getSubjectProgress, getSubjectStats, saveCertificateId, saveCertificateName } from '../lib/storage';
 import { issueCertificate } from '../lib/certificateRegistry';
 import { isSupabaseConfigured } from '../lib/supabaseClient';

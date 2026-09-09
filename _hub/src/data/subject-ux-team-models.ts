@@ -7,7 +7,7 @@ import type { Subject } from '../types';
  * organization scales. Cross-links into UX Leadership for the cultural side
  * of the same problems.
  */
-export const uxTeamModelsSubject: Subject = {
+export const subject: Subject = {
   id: 'ux-team-models',
   title: 'UX Team Models',
   description:

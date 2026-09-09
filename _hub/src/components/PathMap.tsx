@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import type { Subject } from '../types';
+import type { SubjectMeta } from '../types';
 import { getStepUnlockInfo } from '../lib/storage';
 
-export function PathMap({ subject }: { subject: Subject }) {
+export function PathMap({ subject }: { subject: SubjectMeta }) {
   return (
     <div className="path-map">
       {subject.levels.map((level) => (

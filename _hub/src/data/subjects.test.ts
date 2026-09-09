@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { subjects } from './subjects';
+import { subjectsMeta } from './subjectsMeta';
 import { categories } from './categories';
 import { getAllSteps } from '../lib/storage';
 
@@ -64,6 +65,28 @@ describe('subjects content model', () => {
       }
     },
   );
+});
+
+describe('subjectsMeta.ts', () => {
+  // `subjectsMeta` is a hand-maintained, content-free trim of `subjects.ts`
+  // (see `subjectLoaders.ts` for why: it's what ships to the browser up
+  // front, so a step's full content/quiz can load per-subject on demand
+  // instead). Nothing enforces the two stay in sync except this test.
+  it('matches subjects.ts on every field it carries', () => {
+    const derived = subjects.map((s) => ({
+      id: s.id,
+      title: s.title,
+      description: s.description,
+      icon: s.icon,
+      color: s.color,
+      levels: s.levels.map((level) => ({
+        id: level.id,
+        title: level.title,
+        steps: level.steps.map((step) => ({ id: step.id, title: step.title })),
+      })),
+    }));
+    expect(subjectsMeta).toEqual(derived);
+  });
 });
 
 describe('categories.ts', () => {
